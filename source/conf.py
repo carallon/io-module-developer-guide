@@ -78,7 +78,7 @@ todo_include_todos = False
 
 # Get vendor variant
 # Check if we're building on RTD, in which case use project name to determine variant
-if os.environ.get('READTHEDOCS') is True:
+if os.environ.get('READTHEDOCS') == 'True':
     rtd_project = os.environ.get('READTHEDOCS_PROJECT')
     print('Building for Read the Docs, project: {}'.format(rtd_project))
     rtd_project = rtd_project.lower()
