@@ -79,7 +79,9 @@ todo_include_todos = False
 # Get vendor variant
 # Check if we're building on RTD, in which case use project name to determine variant
 if os.environ.get('READTHEDOCS') is True:
-    rtd_project = os.environ.get('READTHEDOCS_PROJECT').lower()
+    rtd_project = os.environ.get('READTHEDOCS_PROJECT')
+    print('Building for Read the Docs, project: {}'.format(rtd_project))
+    rtd_project = rtd_project.lower()
     if 'mosaic' in rtd_project:
         variant = 'mosaic'
     else:
@@ -90,9 +92,11 @@ else:
 
 # Substitutions
 if variant == 'mosaic':
+    print('Building Mosaic variant')
     rst_prolog = """.. |Vendor| replace:: Mosaic
 .. |IO modules path in Documents| replace:: ``Documents/ETC/MosaicDesigner 2/IO Modules/``"""
 else:
+    print('Building Pharos variant')
     rst_prolog = """.. |Vendor| replace:: Pharos
 .. |IO modules path in Documents| replace:: ``Documents/Pharos Controls/Designer/IO Modules/``"""
 
