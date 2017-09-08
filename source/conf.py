@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# IO Modules Developer Guide documentation build configuration file, created by
+# IO Module Developer Guide documentation build configuration file, created by
 # sphinx-quickstart on Wed Aug  9 11:57:38 2017.
 #
 # This file is execfile()d with the current directory set to its
@@ -45,7 +45,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'IO Modules Developer Guide'
+project = u'IO Module Developer Guide'
 copyright = u'2017 Pharos Architectural Controls Ltd'
 author = u'Carallon Ltd'
 
@@ -134,7 +134,7 @@ html_sidebars = {
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'IOModulesDeveloperGuide'
+htmlhelp_basename = 'IOModuleDeveloperGuide'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -161,7 +161,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'IOModulesDeveloperGuide.tex', u'IO Modules Developer Guide',
+    (master_doc, 'IOModuleDeveloperGuide.tex', u'IO Module Developer Guide',
      u'Carallon Ltd', 'manual'),
 ]
 
@@ -171,7 +171,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'iomodulesdeveloperguide', u'IO Modules Developer Guide',
+    (master_doc, 'iomoduledeveloperguide', u'IO Module Developer Guide',
      [author], 1)
 ]
 
@@ -182,7 +182,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'IOModulesDeveloperGuide', u'IO Modules Developer Guide',
-     author, 'IOModulesDeveloperGuide', 'One line description of project.',
+    (master_doc, 'IOModuleDeveloperGuide', u'IO Module Developer Guide',
+     author, 'IOModuleDeveloperGuide', 'One line description of project.',
      'Miscellaneous'),
 ]

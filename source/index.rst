@@ -1,7 +1,7 @@
-.. IO Modules Developer Guide documentation master file
+.. IO Module Developer Guide documentation master file
 
-IO Modules Developer Guide
-##########################
+IO Module Developer Guide
+#########################
 
 .. toctree::
    :maxdepth: 2
