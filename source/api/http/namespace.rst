@@ -105,6 +105,9 @@ Request options are passed as a table to :ref:`http.request()<http-request-metho
    * - ``path``
      - string
      - The path part of the URL, e.g. ``"/json/api/path"``
+   * - ``query``
+     - string
+     - The query string to be added to the URL, e.g. ``"page=5&order=ascending"``
    * - ``port``
      - number
      - The port of the URL; defaults to 80
