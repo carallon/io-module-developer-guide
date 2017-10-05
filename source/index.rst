@@ -23,6 +23,7 @@ IO Module Developer Guide
    api/stream
    api/mailgun
    api/payload
+   api/stopwatch
    api/timer
 
 * :ref:`genindex`

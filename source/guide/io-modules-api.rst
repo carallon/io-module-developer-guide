@@ -3,6 +3,7 @@ IO modules API
 
 Core functionality for IO modules is provided within the ``iomodules`` namespace. Currently available are:
 
+* :doc:`../api/stopwatch`
 * :doc:`../api/timer`
 * Ethernet networking
    * :doc:`../api/net/udpsocket`
