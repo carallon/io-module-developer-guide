@@ -552,7 +552,7 @@ Serial interface
 
 Set user property ``type`` to value ``serial``.
 
-Serial interfaces are available on controllers and remote devices. To send/receive data on a serial interface in an IO module, you must have at least one of these properties in the configuration.
+:doc:`Serial <../api/serial>` interfaces are available on controllers and remote devices. To send/receive data on a serial interface in an IO module, you must have at least one of these properties in the configuration.
 
 Icons
 *****

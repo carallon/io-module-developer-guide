@@ -25,6 +25,7 @@ IO Module Developer Guide
    api/net/sslserver
    api/alarm
    api/stream
+   api/serial
    api/mailgun
    api/payload
    api/stopwatch
