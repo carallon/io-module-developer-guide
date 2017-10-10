@@ -10,6 +10,7 @@ Core functionality for IO modules is provided within the ``iomodules`` namespace
    * :doc:`../api/gpio/digitalinput`
    * :doc:`../api/gpio/digitaloutput`
    * :doc:`../api/gpio/analoginput`
+* :doc:`../api/serial`
 * Ethernet networking
    * :doc:`../api/net/udpsocket`
    * :doc:`../api/net/tcpsocket`
