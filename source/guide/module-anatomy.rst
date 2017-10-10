@@ -299,11 +299,11 @@ The ``properties`` array in the configuration JSON object and the trigger/condit
    * - ``type``
      - string
      - Yes
-     - Value type of the property. Supported types are: ``int``, ``string``, ``double``, ``bool`` & ``ipAddress``.
+     - Value type of the property. Supported basic types are: ``int``, ``string``, ``double``, ``bool`` & ``ipAddress``. Supported resource types are: ``digitalInput``, ``digitalOutput``, ``analogInput`` & ``serial`` (see :ref:`resource-property-types`).
    * - ``editor``
      - object
-     - Yes
-     - An editor object for the given ``type`` (see :ref:`user-property-editor`).
+     - No
+     - An editor object for the given ``type`` (see :ref:`user-property-editor`). Must not be specified for resource types.
    * - ``variablesEnabled``
      - bool
      - No
@@ -516,6 +516,22 @@ Note that you must escape all backslashes in a pattern string with another backs
 .. code-block:: json
 
    "validator": "\\d\\d \\w+"
+
+.. _resource-property-types:
+
+Resource property types
+-----------------------
+
+Where IO modules need to interact with finite resources on the controller, such as a serial port, the property ``type`` should be set to a special resource type. This allows Designer to track the use of these resources to avoid conflicts with other modules and with other triggers and actions.
+
+Resource types do not support custom editors - a standard editor will be presented to the user for these property types.
+
+Serial interface
+^^^^^^^^^^^^^^^^
+
+Set user property ``type`` to value ``serial``.
+
+Serial interfaces are available on controllers and remote devices. To send/receive data on a serial interface in an IO module, you must have at least one of these properties in the configuration.
 
 Icons
 *****
