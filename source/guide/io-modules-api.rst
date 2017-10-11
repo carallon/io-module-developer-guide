@@ -6,6 +6,10 @@ Core functionality for IO modules is provided within the ``iomodules`` namespace
 * :doc:`../api/alarm`
 * :doc:`../api/stopwatch`
 * :doc:`../api/timer`
+* Digital/Analog Input/Output
+   * :doc:`../api/gpio/digitalinput`
+   * :doc:`../api/gpio/digitaloutput`
+   * :doc:`../api/gpio/analoginput`
 * Ethernet networking
    * :doc:`../api/net/udpsocket`
    * :doc:`../api/net/tcpsocket`

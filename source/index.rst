@@ -13,6 +13,9 @@ IO Module Developer Guide
    guide/module-instances
    guide/io-modules-api
    guide/controller-api
+   api/gpio/digitalinput
+   api/gpio/digitaloutput
+   api/gpio/analoginput
    api/http/namespace
    api/http/response
    api/net/tcpsocket
