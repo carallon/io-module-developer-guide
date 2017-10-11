@@ -526,6 +526,27 @@ Where IO modules need to interact with finite resources on the controller, such 
 
 Resource types do not support custom editors - a standard editor will be presented to the user for these property types.
 
+Digital input
+^^^^^^^^^^^^^
+
+Set user property ``type`` to value ``digitalInput``.
+
+:doc:`Digital inputs <../api/gpio/digitalinput>` are available on controllers and remote devices. To listen for changes in the state of a digital input, you must have at least one of these properties in the configuration.
+
+Digital output
+^^^^^^^^^^^^^^
+
+Set user property ``type`` to value ``digitalOutput``.
+
+:doc:`Digital outputs <../api/gpio/digitaloutput>` are available on some remote devices. To control the state of a digital output, you must have at least one of these properties in the configuration.
+
+Analog input
+^^^^^^^^^^^^
+
+Set user property ``type`` to value ``analogInput``.
+
+:doc:`Analog inputs <../api/gpio/analoginput>` are available on controllers and remote devices. To listen for changes in the level of an analog input, you must have at least one of these properties in the configuration.
+
 Serial interface
 ^^^^^^^^^^^^^^^^
 
