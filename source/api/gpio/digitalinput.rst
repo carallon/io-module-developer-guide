@@ -1,5 +1,5 @@
-Digital Input
-#############
+gpio.DigitalInput
+#################
 
 The DigitalInput object allows IO modules to hook up to the digital inputs on controllers and remote devices and to be notified about changes to an input's state.
 
