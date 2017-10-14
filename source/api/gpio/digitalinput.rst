@@ -15,7 +15,7 @@ Read only. The current state of the digital input --- true if the digital input 
 
 Will return ``nil`` if the DigitalInput object is not currently bound to an input.
 
-The state of any digital input can also be queried through the :doc:`../guide/controller-api`. 
+The state of any digital input can also be queried through the :doc:`../../guide/controller-api`. 
 
 DigitalInput.held -> bool
 =========================
