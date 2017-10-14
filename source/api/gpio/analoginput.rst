@@ -15,7 +15,7 @@ Read only. The current level of the analog input in the range 0-100, representin
 
 Will return ``nil`` if the AnalogInput object is not currently bound to an input.
 
-The level of any analog input can also be queried through the :doc:`../guide/controller-api`.
+The level of any analog input can also be queried through the :doc:`../../guide/controller-api`.
 
 Methods
 *******
