@@ -1,5 +1,5 @@
-Analog Input
-############
+gpio.AnalogInput
+################
 
 The AnalogInput object allows IO modules to hook up to the analog inputs on controllers and remote devices and to be notified about changes to an input's level.
 

@@ -1,5 +1,5 @@
-Digital Output
-##############
+gpio.DigitalOutput
+##################
 
 The DigitalOutput object allows IO modules to hook up to the digital outputs on remote devices and change their state.
 
