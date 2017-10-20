@@ -3,9 +3,7 @@ Timer
 
 A repetitive or single-shot timer. To use a timer, assign a function to its ``timeout_handler`` and call ``start()`` - the handler will be called at constant intervals. The interval can be adjusted with the ``interval`` property.
 
-A timer with an interval of 0 will timeout on every controller refresh.
-
-A timer with a negative interval will be disabled until the interval is set to a non-negative value.
+A timer with an interval of 0 will call its ``timeout_handler`` on every controller refresh.
 
 Set the ``single_shot`` property to true if you only want the timer to call its ``timeout_handler`` once.
 
@@ -15,22 +13,26 @@ Properties
 Timer.interval
 ==============
 
-The timeout interval in milliseconds. If this is set to a non-negative value while the timer is active, the timer will restart. If this is set to a negative value while the timer is active, the timer will stop.
+Read/write. The timeout interval in milliseconds.
+
+Changing the interval while the timer is active will restart the timer with the new interval.
+
+Setting this property to 0 will result in the ``timeout_handler`` being called on every controller refresh. The timer will become inactive if this property is set to a negative value and will remain so until a non-negative value is set.
 
 Timer.remaining_time
 ====================
 
-The remaining time in milliseconds.
+Read only. The remaining time in milliseconds.
 
 Timer.active
 ============
 
-True if the timer is running; otherwise false.
+Read only. True if the timer is running; otherwise false.
 
 Timer.single_shot
 =================
 
-This property determines whether the timer is single-shot. A single-shot timer call its ``timeout_handler`` only once; non-single-shot timers call their ``timeout_handler`` every ``interval`` milliseconds.
+Read/write. This property determines whether the timer is single-shot. A single-shot timer call its ``timeout_handler`` only once; non-single-shot timers call their ``timeout_handler`` every ``interval`` milliseconds.
 
 Methods
 *******
