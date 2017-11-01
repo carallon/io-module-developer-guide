@@ -276,7 +276,7 @@ Module instances only run on the Primary controller of a project. Sometimes it's
 
 You initiate a broadcast with the ``module:broadcast()`` method, which takes a single, optional `array <http://www.lua.org/pil/11.1.html>`_ (integer-indexed table) argument. The values of the array may be strings or numbers only.
 
-Set a function on the instance's ``broadcast_event`` property to handle broadcasts. This ``broadcast_event`` will run on *all* controllers in a project. It will receive an array with the same values as were passed to the ``module::broadcast()`` method (but not the *same* array - the data will have been sent across the network to other controllers).
+Set a function on the instance's ``broadcast_event`` property to handle broadcasts. This ``broadcast_event`` will run on *all* controllers in a project. It will receive an array with the same values as were passed to the ``module:broadcast()`` method (but not the *same* array - the data will have been sent across the network to other controllers).
 
 For example, to start timeline 4 on all controllers from a module action:
 
