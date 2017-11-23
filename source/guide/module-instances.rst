@@ -162,7 +162,7 @@ To test the condition, you implement the condition's ``handler`` function, retur
 The ``handler`` function is passed 2 arguments:
 
 * ``properties`` --- name/value pairs (string-indexed Lua table) of the condition properties set by the user, as defined in the module configuration.
-* ``variables`` --- the variables captured by the trigger as an integer-indexed Lua table. You can modify this array only by appending new variables. If you attempt to modify existing variables, a warning will be logged and any other attempted changes to the variables will be discarded. See the Designer help for information about using variables in conditions.
+* ``variables`` --- the variables captured by the trigger as an integer-indexed Lua table. You can modify this array only by appending new variables. If you attempt to modify existing variables, a warning will be logged and any other attempted changes to the array will be discarded. See the Designer help for information about using variables in conditions.
 
 You must return from the ``handler`` function as soon as possible else you risk reducing the refresh rate of the controller's playback engine.
 
