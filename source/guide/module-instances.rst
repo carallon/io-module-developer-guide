@@ -162,7 +162,8 @@ To test the condition, you implement the condition's ``handler`` function, retur
 The ``handler`` function is passed 2 arguments:
 
 * ``properties`` --- name/value pairs (string-indexed Lua table) of the condition properties set by the user, as defined in the module configuration.
-* ``variables`` --- the variables captured by the trigger as an integer-indexed Lua table. See the Designer help for information about using variables in conditions.
+* ``variables`` --- the variables captured by the trigger as an integer-indexed Lua table. Each variable is of the type ``Variant``. `See the Scripting API documentation for information about Variants
+<http://www.pharoscontrols.com/software_help/designer2/Default.htm#Help/Reference/Scripting/Variants.htm>`_. See the Designer help for information about using variables in conditions.
 
 You must return from the ``handler`` function as soon as possible else you risk reducing the refresh rate of the controller's playback engine.
 
@@ -223,7 +224,8 @@ Actions defined in the module configuration JSON file are accessed in Lua throug
 To implement a function to perform the action, you implement the action's ``handler`` function, which is passed 2 arguments:
 
 * ``properties`` --- name/value pairs (string-indexed Lua table) of the action properties set by the user, as defined in the module configuration.
-* ``variables`` --- the variables captured by the trigger as an integer-indexed Lua table. See the Designer help for information about using variables in actions.
+* ``variables`` --- the variables captured by the trigger as an integer-indexed Lua table. Each variable is of the type ``Variant``. `See the Scripting API documentation for information about Variants
+<http://www.pharoscontrols.com/software_help/designer2/Default.htm#Help/Reference/Scripting/Variants.htm>`_. See the Designer help for information about using variables in actions.
 
 You must return from the ``handler`` function as soon as possible else you risk reducing the refresh rate of the controller's playback engine.
 
@@ -291,3 +293,6 @@ For example, to start timeline 4 on all controllers from a module action:
         controller.log("Action: Broadcast Example - Timeline "..variables[1].." is playing next")
         controller.get_timeline(variables[1]):start()
     end
+
+Where ``variables`` is the array of values passed to ``module:broadcast()``, converted to the ``Variant`` type. `See the Scripting API documentation for information about Variants
+<http://www.pharoscontrols.com/software_help/designer2/Default.htm#Help/Reference/Scripting/Variants.htm>`_.
