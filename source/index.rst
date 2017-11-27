@@ -20,6 +20,7 @@ IO Module Developer Guide
    api/net/tcpserver
    api/net/sslsocket
    api/net/sslserver
+   api/alarm
    api/stream
    api/mailgun
    api/payload
