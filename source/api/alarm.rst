@@ -21,7 +21,7 @@ Read only. True if the alarm will call the ``alarm_handler`` when the next event
 Alarm.single_shot
 =================
 
-This property determines whether the alarm is single-shot. A single-shot alarm will call its ``alarm_handler`` only once; repeating alarms call their ``alarm_handler`` every time their event occurs.
+True by default. This property determines whether the alarm is single-shot. A single-shot alarm will call its ``alarm_handler`` only once; repeating alarms call their ``alarm_handler`` every time their event occurs.
 
 Methods
 *******
