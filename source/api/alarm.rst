@@ -9,7 +9,7 @@ Properties
 **********
 
 Alarm.condition_valid
-============
+=====================
 
 Read only. True if the alarm's event condition is valid, otherwise false. Alarms for which this is false cannot be started.
 
@@ -37,12 +37,12 @@ Alarm:cancel()
 Cancels the alarm. The ``alarm_handler`` will not be called next time the event condition is matched.
 
 Alarm:start()
-==============
+=============
 
 If ``condition_valid`` is true, starts or resumes the alarm; the ``alarm_handler`` will be called next time the event condition is matched. If ``condition_valid`` is false, the alarm is not started and an error is logged. 
 
 Alarm:set_time(hour, minute, second)
-==============
+====================================
 
 Sets the alarm's event condition to match the time ``hour``:``minute``:``second``. To be valid, the ``hour``, ``minute`` and ``second`` arguments must be in the range 0-23, 0-59 and 0-59 respectively. If all arguments are valid, ``condition_valid`` becomes true. If at least one argument is invalid, the alarm will be canceled and ``condition_valid`` will be false until a valid time is set.
 
