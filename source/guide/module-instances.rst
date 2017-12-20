@@ -148,6 +148,8 @@ Then you would want to pass a number for the state to ``fire()`` so you can matc
 
 To determine the string describing the trigger that will be displayed in the Designer Trigger UI and on the controller's web interface, you should set the trigger's :ref:`description_handler <description-handler>`.
 
+.. _module-instances-conditions:
+
 Conditions
 ==========
 

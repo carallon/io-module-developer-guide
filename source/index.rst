@@ -26,6 +26,7 @@ IO Module Developer Guide
    api/payload
    api/stopwatch
    api/timer
+   whatsnew
 
 * :ref:`genindex`
 * :ref:`search`
