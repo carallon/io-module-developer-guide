@@ -95,7 +95,7 @@ Read only. The state of the socket. States are static properties of TcpSocket, e
      - 4
      - The socket is bound to a port.
    * - ``CLOSING_STATE``
-     - 5
+     - 6
      - The socket is about to close (data may still be waiting to be written).
 
 TcpSocket.valid
