@@ -256,7 +256,7 @@ To determine the string describing the action that will be displayed in the Desi
 Description handler
 ===================
 
-The Designer Trigger UI and the controller's web interface display descriptive strings about triggers, conditions and actions, reflecting the property values set by the user. To determine this string for the triggers, conditions and actions in a module, you should assign a function to the ``description_handler`` property. The ``description_handler`` is passed a table with the property values, keyed with the property names.
+The Designer Trigger UI and the controller's web interface display descriptive strings about triggers, conditions and actions, reflecting the property values set by the user. To determine this string for the triggers, conditions and actions in a module, you should assign a function to the ``description_handler`` property. The ``description_handler`` is passed a table with the property values, keyed with the property names. For conditions, the ``description_handler`` is passed a second parameter, ``negate``, which is true if the condition is negated and false otherwise.
 
 .. note:: Properties being set from trigger variables will have a string value of "<variable x>", where x is the variable number set by the user.
 
