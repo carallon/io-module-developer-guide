@@ -10,6 +10,7 @@ IO Module Developer Guide
    guide/getting-started
    guide/module-anatomy
    guide/module-distribution
+   guide/modules
    guide/module-instances
    guide/io-modules-api
    guide/controller-api

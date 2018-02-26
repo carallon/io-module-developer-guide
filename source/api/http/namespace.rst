@@ -1,4 +1,4 @@
-HTTP namepsace
+HTTP namespace
 ##############
 
 The ``http`` namespace has methods to allow an IO module to perform HTTP requests. The ``request()`` method allows any HTTP request to be created; there are some convenience methods for GET, PUT, POST and DELETE requests. All the request methods return an :doc:`./response` object.

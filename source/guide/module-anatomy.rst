@@ -1,5 +1,5 @@
-Anatomy of a module
-###################
+Module packages
+###############
 
 The source code and resources of a module must be within a folder and its subfolders. We'll refer to this as the module *package*.
 
@@ -33,7 +33,8 @@ For example:
            }
        ],
        "config": "config.json",
-       "main": "module.lua",
+       "instanceMain": "instance.lua",
+       "moduleMain": "module.lua",
        "sources": [
            "lib/example.lua"
        ]
@@ -85,10 +86,14 @@ Full details of the members of the package object are as follows:
      - string
      - Yes
      - Relative path of the configuration JSON file.
-   * - ``main``
+   * - ``instanceMain``
      - string
      - Yes
-     - Relative path of the entry Lua file.
+     - Relative path of the Lua file executed for each module instance.
+   * - ``moduleMain``
+     - string
+     - No
+     - Relative path of the Lua file executed before any of a module's instances are initialised.
    * - ``sources``
      - array
      - No
@@ -200,7 +205,7 @@ For example:
                ]
            }
        ],
-       "properties": [
+       "instanceProperties": [
            {
                "name": "IP address",
                "type": "ipAddress",
@@ -238,10 +243,14 @@ Full details of the members of the configuration object are as follows:
      - array
      - No
      - An array of action objects (see below).
-   * - ``properties``
+   * - ``instanceProperties``
      - array
      - No
      - An array of user properties to be set for each module instance (see :ref:`user-property`).
+   * - ``moduleProperties``
+     - array
+     - No
+     - An array of user properties common to every module instance.
 
 Trigger/Condition/Action object
 ===============================
@@ -561,24 +570,25 @@ Image files referenced by the configuration JSON file for module triggers, condi
 
 We recommend using SVG images for your module icons - they scale well for use on high DPI monitors. IO modules also support PNG and JPEG images as icons --- we recommend you generate them with dimension 64 pixels.
 
-Lua source
-**********
+Lua sources
+***********
 
-IO module functionality is written in Lua. More than one Lua file may be used --- one Lua file is defined as the entry point in the ``package.json`` file and this may ``require`` other Lua files within the module package. All Lua files included through ``require`` must be listed in the ``sources`` array in ``package.json``.
+IO module functionality is written in Lua. Two specified Lua sources act as entry points. The ``instanceMain`` file is executed for each module instance, and is a required part of the package. The optional ``moduleMain`` file is executed for each module and can manage data common to all instances of a module. These files may ``require`` other Lua files within the module package. All Lua files included through ``require`` must be listed in the ``sources`` array in ``package.json``.
 
 For example, in ``package.json``, you might have:
 
 .. code-block:: json
 
    {
-      "main": "module.lua",
+      "moduleMain": "module_main.lua",
+      "instanceMain": "instance_main.lua",
       "sources": [
          "lib/example.lua"
       ]
    ...
 
 
-Then in ``module.lua`` you can write:
+Then in ``instance_main.lua`` or ``module_main.lua`` you can write:
 
 .. code-block:: lua
    
