@@ -43,7 +43,7 @@ This is where you define how a user of Designer will interact with your module, 
 
 We're going to build a timer module with start/stop actions and a timeout trigger.
 
-With *General* selected in the category list on the left, set the *Short name* property to *Timer*. Whatever you set as the short name will be prepended to any trigger, action or condition name in Designer. This gives you the option of not having to refer to your module name or function in every trigger, condition and action name. Leave this blank to ignore this feature.
+With *Module* selected in the category list on the left, set the *Short name* property to *Timer*. Whatever you set as the short name will be prepended to any trigger, action or condition name in Designer. This gives you the option of not having to refer to your module name or function in every trigger, condition and action name. Leave this blank to ignore this feature.
 
 .. todo::
    
@@ -79,7 +79,7 @@ Check the option to open the export location in a file browser and click **Expor
 Implement module functionality in Lua
 *************************************
 
-Open the file ``main.lua`` in your favourite text editor from within your new module package folder. You'll see that Designer has already defined some handler functions for your trigger and the two actions.
+Open the file ``instance_main.lua`` in your favourite text editor from within your new module package folder. You'll see that Designer has already defined some handler functions for your trigger and the two actions.
 
 Write module instance handlers
 ==============================
@@ -88,11 +88,11 @@ We want to create our timer and set its interval when an instance of our module 
 
 .. code-block:: lua
 
-   module.initialize = function()
+   instance.initialize = function()
       -- create a new timer, which is 'global' within an instance of this module
       timer = iomodules.Timer.new()
       -- get instance "Interval" property (in seconds)
-      local interval_secs = module:property("Interval")
+      local interval_secs = instance:property("Interval")
       -- convert to ms and set as timer interval
       timer.interval = interval_secs * 1000
    end
@@ -101,7 +101,7 @@ When the module instance is cleaned up, the instance ``cleanup`` handler is call
 
 .. code-block:: lua
 
-   module.cleanup = function()
+   instance.cleanup = function()
       if timer.active then
          timer:stop()
       end
@@ -133,37 +133,37 @@ When the timer's interval is reached we need to fire our module's *Timeout* trig
 
    timer.timeout_handler = function()
       -- get the instance "Timeout" trigger and fire it
-      module:trigger("Timeout"):fire()
+      instance:trigger("Timeout"):fire()
    end
 
-At this point, your ``main.lua`` file should have at least the following:
+At this point, your ``instance_main.lua`` file should have at least the following:
 
 .. code-block:: lua
 
-   module.initialize = function()
+   instance.initialize = function()
        -- create a new timer, which is 'global' within an instance of this module
        timer = iomodules.Timer.new()
        -- get instance "Interval" property (in seconds)
-       local interval_secs = module:property("Interval")
+       local interval_secs = instance:property("Interval")
        -- convert to ms and set as timer interval
        timer.interval = interval_secs * 1000
        timer.timeout_handler = function()
            -- get the instance "Timeout" trigger and fire it
-           module:trigger("Timeout"):fire()
+           instance:trigger("Timeout"):fire()
        end
    end
 
-   module.cleanup = function()
+   instance.cleanup = function()
        if timer.active then
            timer:stop()
        end
    end
 
-   module:action("Start").handler = function()
+   instance:action("Start").handler = function()
        timer:start()
    end
 
-   module:action("Stop").handler = function()
+   instance:action("Stop").handler = function()
        timer:stop()
    end
 

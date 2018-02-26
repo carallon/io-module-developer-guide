@@ -9,15 +9,36 @@ When writing a module, you are writing for one instance of the module; all Lua c
 
 Module instances only run on the Primary controller in a project with the exception of :ref:`broadcast events <broadcast-event>`, which run on all controllers.
 
+Module API
+==========
+
+The ``module`` object is defined within the instance sandbox. This allows you to access module properties global to all instances, and access to a ``shared_table`` common to all instances.
+
+Module properties
+=================
+
+Properties defined in the ``moduleProperties`` field in the module configuration JSON file are set by the user in Designer for each module. To read the values of these properties in the [[[module script]]], use the ``module:property()`` method, passing the name of the property as defined in the configuration, e.g.
+
+.. code-block:: lua
+
+Shared table
+============
+
+The ``module`` object has a ``shared_table`` field. This field also appears in the ``module`` object exposed to other module instances.
+
+The ``shared_table`` is mutable. Changes applies to the ``shared_table`` will appear in all other instances.
+
+[[[example]]]
+
 Instance API
 ************
 
-The ``module`` object is defined within the instance sandbox. This allows you to interact with the triggers, conditions and actions defined in the module configuration, to access the instance properties, and to implement handler functions for each instance.
+The ``instance`` object is defined within the instance sandbox. This allows you to interact with the triggers, conditions and actions defined in the module configuration, to access the instance properties, and to implement handler functions for each instance.
 
-Module name
-===========
+Instance name
+=============
 
-The user can rename a module instance in Designer. This name may be read in Lua from the ``module.name`` property.
+The user can rename a module instance in Designer. This name may be read in Lua from the ``instance.name`` property.
 
 Instance lifetime functions
 ===========================
@@ -30,13 +51,13 @@ For example:
 
 .. code-block:: lua
 
-    module.initialize = function()
+    instance.initialize = function()
         -- create a timer for use in the module
         myTimer = iomodules.Timer.new()
         myTimer.interval = 10000
     end
 
-    module.cleanup = function()
+    instance.cleanup = function()
         -- stop the timer, if still running
         myTimer:stop()
     end
@@ -50,32 +71,32 @@ For example:
 
 .. code-block:: lua
 
-    module.net_up = function()
+    instance.net_up = function()
         -- (re-)establish a connection
         socket:connect(ip_addr, port, iomodules.Stream.READ_ONLY_MODE)
     end
 
-    module.net_down = function()
+    instance.net_down = function()
         socket:disconnect()
     end
 
 Instance properties
 ===================
 
-Properties defined in the module configuration JSON file are set by the user in Designer for each module instance. To read the value of these properties for the instance in Lua, use the ``module:property()`` method, passing the name of the property as defined in the configuration, e.g.
+Properties defined in the module configuration JSON file are set by the user in Designer for each module instance. To read the value of these properties for the instance in Lua, use the ``instance:property()`` method, passing the name of the property as defined in the configuration, e.g.
 
 .. code-block:: lua
 
-    local ip_addr = module:property("IP Address")
+    local ip_addr = instance:property("IP Address")
 
 Triggers
 ========
 
-Triggers defined in the module configuration JSON file are accessed in Lua through the ``module:trigger()`` method, which takes the name of the trigger as defined in the configuration as its only argument. For example:
+Triggers defined in the module configuration JSON file are accessed in Lua through the ``instance:trigger()`` method, which takes the name of the trigger as defined in the configuration as its only argument. For example:
 
 .. code-block:: lua
 
-    local state_changed_trigger = module:trigger("State Changed")
+    local state_changed_trigger = instance:trigger("State Changed")
 
 Trigger objects have a ``fire()`` method to queue a trigger event for the next playback refresh. You may pass one argument to this method, which will be passed on to the trigger's ``test`` handler.
 
@@ -153,11 +174,11 @@ To determine the string describing the trigger that will be displayed in the Des
 Conditions
 ==========
 
-Conditions defined in the module configuration JSON file are accessed in Lua through the ``module:condition()`` method, which takes the name of the condition as defined in the configuration as its only argument. For example:
+Conditions defined in the module configuration JSON file are accessed in Lua through the ``instance:condition()`` method, which takes the name of the condition as defined in the configuration as its only argument. For example:
 
 .. code-block:: lua
 
-    local connected_condition = module:condition("Connected")
+    local connected_condition = instance:condition("Connected")
 
 To test the condition, you implement the condition's ``handler`` function, returning ``true`` if the condition is met. If you don't implement the condition ``handler``, the condition will always fail, as if you'd implemented a handler that always returns ``false``.
 
@@ -204,7 +225,7 @@ Then you could define the handler as follows:
 
 .. code-block:: lua
 
-    module:condition("Connected").handler = function(properties, variables)
+    instance:condition("Connected").handler = function(properties, variables)
         -- get boolean value of user property
         local connectedProperty = properties["Connected"]
         -- compare against some cached state for the instance
@@ -216,11 +237,11 @@ To determine the string describing the condition that will be displayed in the D
 Actions
 =======
 
-Actions defined in the module configuration JSON file are accessed in Lua through the ``module:action()`` method, which takes the name of the action as defined in the configuration as its only argument. For example:
+Actions defined in the module configuration JSON file are accessed in Lua through the ``instance:action()`` method, which takes the name of the action as defined in the configuration as its only argument. For example:
 
 .. code-block:: lua
 
-    local lamp_on_action = module:action("Lamp On")
+    local lamp_on_action = instance:action("Lamp On")
 
 To implement a function to perform the action, you implement the action's ``handler`` function, which is passed 2 arguments:
 
@@ -245,7 +266,7 @@ Then you could define the handler as follows:
 
 .. code-block:: lua
 
-    module:action("Lamp On").handler = function(properties, variables)
+    instance:action("Lamp On").handler = function(properties, variables)
         projector:send_lamp_on()
     end
 
@@ -264,7 +285,7 @@ For example:
 
 .. code-block:: lua
 
-    module:action("Set Mode").description_handler = function(properties)
+    instance:action("Set Mode").description_handler = function(properties)
         return "Set mode "..properties.Mode
     end
 
@@ -276,22 +297,22 @@ Broadcast
 
 Module instances only run on the Primary controller of a project. Sometimes it's necessary to run some Lua code on all controllers, particularly when calling the :doc:`./controller-api`, which only affects the local controller.
 
-You initiate a broadcast with the ``module:broadcast()`` method, which takes a single, optional `array <http://www.lua.org/pil/11.1.html>`_ (integer-indexed table) argument. The values of the array may be strings or numbers only.
+You initiate a broadcast with the ``instance:broadcast()`` method, which takes a single, optional `array <http://www.lua.org/pil/11.1.html>`_ (integer-indexed table) argument. The values of the array may be strings or numbers only.
 
-Set a function on the instance's ``broadcast_event`` property to handle broadcasts. This ``broadcast_event`` will run on *all* controllers in a project. It will receive an array with the same values as were passed to the ``module:broadcast()`` method (but not the *same* array - the data will have been sent across the network to other controllers).
+Set a function on the instance's ``broadcast_event`` property to handle broadcasts. This ``broadcast_event`` will run on *all* controllers in a project. It will receive an array with the same values as were passed to the ``instance:broadcast()`` method (but not the *same* array - the data will have been sent across the network to other controllers).
 
 For example, to start timeline 4 on all controllers from a module action:
 
 .. code-block:: lua
 
-    module:action("Broadcast Example").handler = function(properties, variables)
+    instance:action("Broadcast Example").handler = function(properties, variables)
         local timelineNum = 4
-        module:broadcast(timelineNum)
+        instance:broadcast(timelineNum)
     end
 
-    module.broadcast_event = function(variables)
+    instance.broadcast_event = function(variables)
         controller.log("Action: Broadcast Example - Timeline "..variables[1].." is playing next")
         controller.get_timeline(variables[1]):start()
     end
 
-Where ``variables`` is the array of values passed to ``module:broadcast()``, converted to the ``Variant`` type. See the `Scripting API documentation <http://www.pharoscontrols.com/software_help/designer2/Default.htm#Help/Reference/Scripting/Variants.htm>`_ for information about Variants.
+Where ``variables`` is the array of values passed to ``instance:broadcast()``, converted to the ``Variant`` type. See the `Scripting API documentation <http://www.pharoscontrols.com/software_help/designer2/Default.htm#Help/Reference/Scripting/Variants.htm>`_ for information about Variants.
