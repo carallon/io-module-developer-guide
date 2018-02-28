@@ -42,7 +42,7 @@ The ``module`` object has a ``shared_table`` field. This field also appears in t
 
 The ``shared_table`` is mutable. Changes applies to the ``shared_table`` in the module script will appear in all instances.
 
-:
+As an example, consider an IO module which communicates with a particular type of device using the UDP protocol. Each device has a unique IP address. However, the devices send datagrams back to the controller on a single port. This port must be managed by the module itself. However, it cannot be known from the module script which instances correspond to which device. Thus we need a way for instances to inform the module script of their device's IP addresses:
 
 .. code-block:: lua
 
@@ -63,7 +63,9 @@ The ``shared_table`` is mutable. Changes applies to the ``shared_table`` in the 
         end
     end
 
-:
+In ``shared_table`` we store a function, or closure, called ``register_datagram_received_callback`` which can be used by instances to associate their device's IP address with a callback. When the socket indicates that a datagram has arrived, the ``ready_read_handler`` determines the sender's IP address and calls the corresponding callback function with the payload data.
+
+In the instance script, the following code is executed:
 
 .. code-block:: lua
 
@@ -72,3 +74,5 @@ The ``shared_table`` is mutable. Changes applies to the ``shared_table`` in the 
         ... use data ...
     end
     module.shared_table.register_datagram_received_callback(device_ip_address, datagram_received_callback)
+
+Now instances will receive device messages directly without having to know about management of the underlying UDP port.
