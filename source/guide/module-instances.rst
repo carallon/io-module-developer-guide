@@ -5,7 +5,9 @@ For a module to be used in a Designer project, at least one *instance* of the mo
 
 The user must choose an instance when using the module's triggers, conditions and actions, although if there is only one instance of the module in their project then this will be selected by default. For triggers, the instance setting defines which instance must fire the trigger for it to match. For conditions, the instance setting defines which instance will test the condition. For actions, the instance setting defines which instance will perform the action.
 
-When writing a module, you are writing for one instance of the module; all Lua code for a module runs in an instance sandbox. Any Lua variables you create at 'global' scope in module code are not visible to other modules --- they are only global in the sense that they will exist throughout the life of an instance of the module.
+A required field in the IO module ``package.json`` is ``instanceMain``. This specifies a lua script which is run for each instance, creating an *instance sandbox*. A module instance's sandbox can be effectively interpreted as all lua objects reachable only from the global table of the instance script, as executed for that module instance. Any variables at global scope in ``instanceMain`` will have a separate instantiation for each instance sandbox created.
+
+As implied by their name, instance sandboxes can be independent, although in practice may need to share information. This is best supported by having a module script, specified by the optional ``moduleMain`` field of the ``package.json`` file. A module script, if provided, is run only once, creating a *module sandbox* which stores data global to all instances. Refer to the :doc:`../guide/modules` section of this guide for more information.
 
 Module instances only run on the Primary controller in a project with the exception of :ref:`broadcast events <broadcast-event>`, which run on all controllers.
 
@@ -17,18 +19,28 @@ The ``module`` object is defined within the instance sandbox. This allows you to
 Module properties
 =================
 
-Properties defined in the ``moduleProperties`` field in the module configuration JSON file are set by the user in Designer for each module. To read the values of these properties in the [[[module script]]], use the ``module:property()`` method, passing the name of the property as defined in the configuration, e.g.
+Properties defined in the ``moduleProperties`` field in the module configuration JSON file are set by the user in Designer for each module. To read the values of these properties in the instance, use the ``module:property()`` method, passing the name of the property as defined in the configuration.
+
+For example:
 
 .. code-block:: lua
+
+    local udp_socket = iomodules.UdpSocket.new()
+    local inbound_port = module:property("Inbound Port")
+    udp_socket:bind_async(inbound_port)
 
 Shared table
 ============
 
 The ``module`` object has a ``shared_table`` field. This field also appears in the ``module`` object exposed to other module instances.
 
-The ``shared_table`` is mutable. Changes applies to the ``shared_table`` will appear in all other instances.
+The ``shared_table`` is mutable. Changes applies to the ``shared_table`` will appear in all other instances. In most circumstances it is preferable for the ``shared_table`` to populated with functions by the module script, and for instances to interact with shared data only through calling these functions, and not by modifying the ``shared_table``.
 
-[[[example]]]
+As an example, suppose the module script manages a counter shared between all instances. The module script may have loaded an ``increment_counter`` function in the ``shared_table`` which can be invoked in the instance script as follows:
+
+.. code-block:: lua
+
+    module.shared_table.increment_counter()
 
 Instance API
 ************
