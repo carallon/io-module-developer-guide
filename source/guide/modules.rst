@@ -1,7 +1,7 @@
 Module scripts
 ##############
 
-If the optional ``moduleMain`` property in the ``package.json`` file is specified, it refers to the module script. The module script is always run before instance scripts, and only once for each module. The global table resulting from running the module script is referred to as the module sandbox. Variables in the module sandbox are not visible to instance sandboxes, except by assigning them to the ``shared_table`` described below.
+If the optional ``moduleMain`` property in the ``package.json`` file is specified, it refers to the *module script*. The module script is always run before instance scripts, and only once for each module. The global table resulting from running the module script is referred to as the *module sandbox*. Variables in the module sandbox are not visible to instance sandboxes, except by assigning them to the ``shared_table`` described below.
 
 A module script may be necessary when dealing with finite controller resources. A set of instances may need to access the same UDP port; however, only one ``UdpSocket`` can be bound to a given UDP port. In this case, the ``UdpSocket`` object will have to be managed at the module level. This process is explained further by the examples in this section.
 
@@ -18,8 +18,8 @@ Module lifetime functions
 You may define functions to run at key points in a module's lifetime. These mirror the lifetime functions of module instances.
 
 * ``initialize()`` --- called right after the project loads, but before the ``initialize`` handlers of any module instances.
-* ``net_up()`` --- called when the controller network interface comes up or just after the ``initialize`` handler if the network interface is up at the time of project unload. Guaranteed to be called before the ``net_up`` handlers of any module instances. May be called before or after the ``initialize`` handlers of any module instances.
-* ``net_down()`` --- called when the controller network interface goes down or just before the ``cleanup`` handler if the network interface is up at the time of project unload. Called after the ``net_down`` handlers of any module instances. May be called before or after the ``cleanup`` handlers of any module instances.
+* ``net_up()`` --- called when the controller network interface comes up or just after the ``initialize`` handler if the network interface is up at the time of project unload. Guaranteed to be called before the ``net_up`` handlers of any of the IO module's instance sandboxes. Might be called before or after the ``initialize`` handlers of any module instances.
+* ``net_down()`` --- called when the controller network interface goes down or just before the ``cleanup`` handler if the network interface is up at the time of project unload. Guaranteed to be called after the ``net_down`` handlers of any of the IO module's instance sandboxes. Might be called before or after the ``cleanup`` handlers of any module instances.
 * ``cleanup()`` --- called just before the project unloads. Called after the ``cleanup`` handlers of any module instances.
 
 Module properties

@@ -29,7 +29,7 @@ Under the hood, these I/O bound objects exist in a separate thread to controller
 
 The async functions take a callback function as their last argument, which is called when the result of the function is known. The callbacks run in the same thread as playback; event handlers for the object do not --- so be aware that your event handlers may be called *before* your async callback.
 
-For example, ``UdpSocket`` has a ``bind()`` member function and a ``bind_async()`` member function. If you bind your socket in your module's ``net_up`` handler then you can use the sync version:
+For example, ``UdpSocket`` has a ``bind()`` member function and a ``bind_async()`` member function. If you bind your socket in your module's ``net_up`` handler (note that binding to a fixed port in this manner should be done in a module script, not an instance script) then you can use the sync version:
 
 .. code-block:: lua
 

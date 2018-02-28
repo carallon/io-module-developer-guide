@@ -19,8 +19,8 @@ For example:
        "description": "A demonstration of an IO module package",
        "version": "1.0",
        "uuid": "{84bea226-4123-4cc5-be3c-c8adee049e9c}",
-       "ioModuleApiVersion": "1.0",
-       "controllerApiVersion": 1,
+       "ioModuleApiVersion": "2.0",
+       "controllerApiVersion": 2,
        "author": "Inspired Coding",
        "contributors": [
            {
