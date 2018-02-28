@@ -1,4 +1,4 @@
-Module Scripts
+Module scripts
 ##############
 
 If the optional ``moduleMain`` property in the ``package.json`` file is specified, it refers to the module script. The module script is always run before instance scripts, and only once for each module. The global table resulting from running the module script is referred to as the module sandbox. Variables in the module sandbox are not visible to instance sandboxes, except by assigning them to the ``shared_table`` described below.
@@ -25,9 +25,15 @@ You may define functions to run at key points in a module's lifetime. These mirr
 Module properties
 =================
 
-Properties defined in the ``moduleProperties`` field in the module configuration JSON file are set by the user in Designer for each module. To read the values of these properties in the [[[module script]]], use the ``module:property()`` method, passing the name of the property as defined in the configuration, e.g.
+Properties defined in the ``moduleProperties`` field in the module configuration JSON file are set by the user in Designer for each module. To read the values of these properties in the module script, use the ``module:property()`` method, passing the name of the property as defined in the configuration.
+
+For example:
 
 .. code-block:: lua
+
+    local udp_socket = iomodules.UdpSocket.new()
+    local inbound_port = module:property("Inbound Port")
+    udp_socket:bind_async(inbound_port)
 
 Shared table
 ============
@@ -36,4 +42,33 @@ The ``module`` object has a ``shared_table`` field. This field also appears in t
 
 The ``shared_table`` is mutable. Changes applies to the ``shared_table`` in the module script will appear in all instances.
 
-[[[example]]]
+:
+
+.. code-block:: lua
+
+    local udp_socket = iomodules.UdpSocket.new()
+    ... bind udp_socket to a port ...
+    local datagram_received_callbacks = {}
+
+    module.shared_table.register_datagram_received_callback = function (ip_address, callback)
+        datagram_received_callbacks[ip_address] = callback
+    end
+
+    udp_socket.read_read_handler = function(socket)
+        local read_datagram_string_result = socket:read_datagram_string()
+        local sender_address = read_datagram_string_result.sender_address
+        local datagram_received_callback = datagram_received_callbacks[sender_address]
+        if type(datagram_received_callback) == "function" then
+            datagram_received_callback(read_datagram_string_result.data)
+        end
+    end
+
+:
+
+.. code-block:: lua
+
+    local device_ip_address = instance:property("IP address")
+    local datagram_received_callback = function(data)
+        ... use data ...
+    end
+    module.shared_table.register_datagram_received_callback(device_ip_address, datagram_received_callback)
