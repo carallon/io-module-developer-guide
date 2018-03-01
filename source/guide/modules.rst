@@ -57,14 +57,20 @@ As an example, consider an IO module which communicates with a particular type o
         inbound_socket:bind(inbound_port)
     end
 
+    module.net_down = function()
+        inbound_socket:close()
+    end
+
     module.shared_table.register_datagram_received_callback = function(ip_address, callback)
         datagram_received_callbacks[ip_address] = callback
     end
 
     inbound_socket.ready_read_handler = function(socket)
         local read_datagram_string_result = socket:read_datagram_string()
+        -- Receive datagrams until there are none pending
         while read_datagram_string_result.valid do
             local sender_address = read_datagram_string_result.sender_address
+            -- If there is a callback registered for the sender's IP address, call it
             local datagram_received_callback = datagram_received_callbacks[sender_address]
             if type(datagram_received_callback) == "function" then
                 datagram_received_callback(read_datagram_string_result.data)
@@ -83,6 +89,8 @@ In the instance script, the following code is executed:
     local datagram_received_callback = function(data)
         -- use data
     end
+    -- register callback with the device's IP address. When a datagram is received from the device,
+    -- datagram_received_callback is called with the payload
     module.shared_table.register_datagram_received_callback(device_ip_address, datagram_received_callback)
 
 Now instances will receive device messages directly without having to know about management of the underlying UDP socket.

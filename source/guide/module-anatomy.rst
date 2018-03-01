@@ -69,7 +69,7 @@ Full details of the members of the package object are as follows:
    * - ``ioModuleApiVersion``
      - string
      - Yes
-     - The IO module API version required to run this module. Must be in the format ``a.b`` or ``a.b.c``. The latest version at time of writing is ``1.0``.
+     - The IO module API version required to run this module. Must be in the format ``a.b`` or ``a.b.c``. The latest version at time of writing is ``2.0``.
    * - ``controllerApiVersion``
      - number
      - Yes
