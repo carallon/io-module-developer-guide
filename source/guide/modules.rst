@@ -31,9 +31,12 @@ For example:
 
 .. code-block:: lua
 
-    local udp_socket = iomodules.UdpSocket.new()
+    local udp_socket = iomodules.net.UdpSocket.new()
     local inbound_port = module:property("Inbound Port")
-    udp_socket:bind_async(inbound_port)
+
+    module.net_up = function()
+        udp_socket:bind(inbound_port)
+    end
 
 Shared table
 ============
@@ -46,20 +49,27 @@ As an example, consider an IO module which communicates with a particular type o
 
 .. code-block:: lua
 
-    local udp_socket = iomodules.UdpSocket.new()
-    ... bind udp_socket to a port ...
+    local inbound_socket = iomodules.net.UdpSocket.new()
+    local inbound_port = module:property("Inbound Port")
     local datagram_received_callbacks = {}
 
-    module.shared_table.register_datagram_received_callback = function (ip_address, callback)
+    module.net_up = function()
+        inbound_socket:bind(inbound_port)
+    end
+
+    module.shared_table.register_datagram_received_callback = function(ip_address, callback)
         datagram_received_callbacks[ip_address] = callback
     end
 
-    udp_socket.read_read_handler = function(socket)
+    inbound_socket.ready_read_handler = function(socket)
         local read_datagram_string_result = socket:read_datagram_string()
-        local sender_address = read_datagram_string_result.sender_address
-        local datagram_received_callback = datagram_received_callbacks[sender_address]
-        if type(datagram_received_callback) == "function" then
-            datagram_received_callback(read_datagram_string_result.data)
+        while read_datagram_string_result.valid do
+            local sender_address = read_datagram_string_result.sender_address
+            local datagram_received_callback = datagram_received_callbacks[sender_address]
+            if type(datagram_received_callback) == "function" then
+                datagram_received_callback(read_datagram_string_result.data)
+            end
+            read_datagram_string_result = socket:read_datagram_string()
         end
     end
 
@@ -69,10 +79,10 @@ In the instance script, the following code is executed:
 
 .. code-block:: lua
 
-    local device_ip_address = instance:property("IP address")
+    local device_ip_address = instance:property("IP Address")
     local datagram_received_callback = function(data)
-        ... use data ...
+        -- use data
     end
     module.shared_table.register_datagram_received_callback(device_ip_address, datagram_received_callback)
 
-Now instances will receive device messages directly without having to know about management of the underlying UDP port.
+Now instances will receive device messages directly without having to know about management of the underlying UDP socket.
