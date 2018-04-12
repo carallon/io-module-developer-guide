@@ -5,7 +5,7 @@ For a module to be used in a Designer project, at least one *instance* of the mo
 
 The user must choose an instance when using the module's triggers, conditions and actions, although if there is only one instance of the module in their project then this will be selected by default. For triggers, the instance setting defines which instance must fire the trigger for it to match. For conditions, the instance setting defines which instance will test the condition. For actions, the instance setting defines which instance will perform the action.
 
-A required field in the IO module ``package.json`` is ``instanceMain``. This specifies a lua script which is run for each instance, creating an *instance sandbox*. A module instance's sandbox can be effectively interpreted as all lua objects reachable only from the global table of the instance script, as executed for that module instance. Any variables at global scope in ``instanceMain`` will have a separate instantiation for each instance sandbox created.
+A required field in the IO module ``package.json`` is ``instanceMain``. This specifies a Lua script which is run for each instance, creating an *instance sandbox*. A module instance's sandbox can be effectively interpreted as all Lua objects reachable only from the global table of the instance script, as executed for that module instance. Any variables at global scope in ``instanceMain`` will have a separate instantiation for each instance sandbox created.
 
 As implied by their name, instance sandboxes can be independent, although in practice may need to share information. This is best supported by having a module script, specified by the optional ``moduleMain`` field of the ``package.json`` file. A module script, if provided, is run only once, creating a *module sandbox* which stores data global to all instances. Refer to the :doc:`../guide/modules` section of this guide for more information.
 
@@ -34,7 +34,7 @@ Shared table
 
 The ``module`` object has a ``shared_table`` field. This field also appears in the ``module`` object exposed to other module instances.
 
-The ``shared_table`` is mutable. Changes applies to the ``shared_table`` will appear in all other instances. In most circumstances it is preferable for the ``shared_table`` to populated with functions by the module script, and for instances to interact with shared data only through calling these functions, and not by modifying the ``shared_table``.
+The ``shared_table`` is mutable. Changes applies to the ``shared_table`` will appear in all other instances. In most circumstances it is preferable for the ``shared_table`` to be populated with functions by the module script, and for instances to interact with shared data only through calling these functions, and not by modifying the ``shared_table``.
 
 As an example, suppose the module script manages a counter shared between all instances. The module script may have loaded an ``increment_counter`` function in the ``shared_table`` which can be invoked in the instance script as follows:
 
