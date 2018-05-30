@@ -61,6 +61,12 @@ When the mode changes, the ``mode_changed_handler`` is called.
      - 2
      - The socket is a server-side SSL socket. It is either already encrypted, or it is in the SSL handshake phase.
 
+SslSocket.config
+================
+
+The SSL configuration of this socket. SslSockets have a default configuration that will work for the majority of use cases. If more control is needed - for instance, the peer requires the client to provide a certificate - 
+this can be overriden. If overriden, the new config will be applied on the next connection attempt. See :doc:`../net/sslconfig` for details.
+
 Methods
 *******
 

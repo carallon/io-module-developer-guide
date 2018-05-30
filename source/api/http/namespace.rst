@@ -114,6 +114,9 @@ Request options are passed as a table to :ref:`http.request()<http-request-metho
    * - ``headers``
      - :ref:`http-headers`
      - Headers to be set for the HTTP request
+   * - ``ssl_config``
+     - :doc:`../net/sslconfig`
+     - Optional. If given, overrides the default SSL configuration for communicating with servers requiring encryption.
 
 .. _http-headers:
 
