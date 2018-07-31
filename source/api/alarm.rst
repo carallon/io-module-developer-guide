@@ -59,3 +59,35 @@ The handler has the following signature:
    function(alarm)
 
 The handler is called each time the alarm event condition is matched.
+
+Usage Example
+*************
+
+To run some code at midnight everyday:
+
+main.lua
+========
+
+.. code-block:: lua
+    
+    instance.initialise = function()
+
+        dailyAlarm = iomodules.Alarm.new()
+        dailyAlarm:set_time(0, 0, 0)
+        dailyAlarm.single_shot = false
+        
+        dailyAlarm.alarm_handler = function()
+
+            -- run daily script
+
+        end
+
+        dailyAlarm:start()
+
+    end
+
+    instance.cleanup = function()
+
+        dailyAlarm = nil
+
+    end

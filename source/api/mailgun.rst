@@ -35,3 +35,25 @@ The handler has the following signature:
 This handler is called when an attempt to send an email with ``send_mail()`` is acknowledged by the Mailgun service. ``email_sent`` is true if the email was successfully sent.
 
 Calling ``send_mail()`` from this function should be avoided at all costs, else it is possible to enter an infinite email-sending loop. More SpamCannon than Mailgun, if you will.
+
+Usage Example
+*************
+
+To send an email
+
+main.lua
+========
+
+.. code-block:: lua
+
+    mailConnection = iomodules.Mailgun.new("yourdomain.com", "your-mailgun-accout-key")
+    
+    mailConnection.reply_handler = function(mailgun, email_sent)
+        if email_sent == true then
+            controller.log("ACTION Email notification: send Successful")
+        else
+            controller.log("ACTION Email notification: send Fail")
+        end
+    end
+
+    mailConnection:send_mail("user@yourdomain.com", "user2@anotherdomain.com", "Email Subject", "The body of the email. This can only be plain text.")
