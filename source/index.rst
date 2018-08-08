@@ -23,7 +23,7 @@ IO Module Developer Guide
    api/net/udpsocket
    api/net/tcpserver
    api/net/sslcertificate
-   api/net/sslconfig
+   api/net/sslconfiguration
    api/net/sslencoding
    api/net/sslkey
    api/net/sslsocket
