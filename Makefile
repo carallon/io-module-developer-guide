@@ -3,7 +3,7 @@
 
 # You can set these variables from the command line.
 SPHINXOPTS    =
-SPHINXBUILD   = python -msphinx
+SPHINXBUILD  := $(if $(SPHINXBUILD),$(SPHINXBUILD),"python -msphinx")
 SPHINXPROJ    = IOModulesDeveloperGuide
 SOURCEDIR     = source
 BUILDDIR      = build
