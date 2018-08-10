@@ -39,20 +39,20 @@ Calling ``send_mail()`` from this function should be avoided at all costs, else 
 Usage Example
 *************
 
-To send an email
+To send an email.
 
 main.lua
 ========
 
 .. code-block:: lua
 
-    mailConnection = iomodules.Mailgun.new("yourdomain.com", "your-mailgun-accout-key")
+    mailConnection = iomodules.Mailgun.new("yourdomain.com", "your-mailgun-account-key")
     
     mailConnection.reply_handler = function(mailgun, email_sent)
         if email_sent == true then
-            controller.log("ACTION Email notification: send Successful")
+            controller.log("ACTION Email notification: Send Successful")
         else
-            controller.log("ACTION Email notification: send Fail")
+            controller.log("ACTION Email notification: Send Fail")
         end
     end
 

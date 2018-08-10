@@ -69,7 +69,7 @@ The handler is called each time the timer interval has elapsed.
 Usage Example
 *************
 
-To run a countdown timer to perform an action after a delay
+To run a countdown timer to perform an action after a delay.
 
 main.lua
 ========

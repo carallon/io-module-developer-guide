@@ -133,7 +133,7 @@ HTTP requests and responses have headers, according to the HTTP specification. H
 Usage Example
 *************
 
-To send a HTTP GET request and read the response
+To send an HTTP GET request and read the response.
 
 main.lua
 ========

@@ -83,7 +83,7 @@ The handler is called at regular intervals while the digital input is held in th
 Usage Example
 *************
 
-To link to an input and perform an action when the input changes.
+To listen to an input and perform an action when the input changes.
 
 config.json
 ===========

@@ -48,10 +48,10 @@ config.json
     {
         "actions": [
             {
-                "name": "Enable Output",
+                "name": "Enable Output"
             },
             {
-                "name": "Disable Output",
+                "name": "Disable Output"
             }
         ],
         "instanceProperties": [

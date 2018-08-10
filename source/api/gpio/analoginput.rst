@@ -54,7 +54,7 @@ This handler is called when the level of the analog input changes. The ``level``
 Usage Example
 *************
 
-To link to an input and perform an action when the input changes.
+To listen to an input and perform an action when the input changes.
 
 config.json
 ===========
