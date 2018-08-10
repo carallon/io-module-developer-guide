@@ -50,3 +50,46 @@ The handler has the following signature:
    function(analog_input, level)
 
 This handler is called when the level of the analog input changes. The ``level`` argument is a number (integer) between 0 and 100. It represents a fraction through the voltage range configured for the input in the Designer project.
+
+Usage Example
+*************
+
+To listen to an input and perform an action when the input changes.
+
+config.json
+===========
+
+.. code-block:: javascript
+
+    {
+        "instanceProperties": [
+            {
+                "name": "Input",
+                "type": "analogIn"
+            }
+        ]
+    }
+
+main.lua
+========
+
+.. code-block:: lua
+
+    instance.initialise = function()
+
+        input = iomodules.AnalogInput.new()
+        input:bind(instance:property("Input"))
+
+        input.level_changed_handler = function(input, level)
+
+            -- do something with the level e.g. fire a trigger
+        
+        end
+
+    end
+
+    instance.cleanup = function()
+
+        input:close() -- release the bind of the input
+
+    end

@@ -35,3 +35,61 @@ DigitalOutput:close()
 
 Stops controlling the digital output, releasing this resource for use elsewhere. ``bind()`` can now be called to bind the object to another output.
 
+Usage Example
+*************
+
+To link to an output and set the output state.
+
+config.json
+===========
+
+.. code-block:: javascript
+
+    {
+        "actions": [
+            {
+                "name": "Enable Output"
+            },
+            {
+                "name": "Disable Output"
+            }
+        ],
+        "instanceProperties": [
+            {
+                "name": "Output",
+                "type": "digitalOut"
+            }
+        ]
+    }
+
+main.lua
+========
+
+.. code-block:: lua
+
+    instance.initialise = function()
+
+        output = iomodules.DigitalOutput.new()
+        output:bind(instance:property("Output"))
+
+        output.state = false -- set output to off
+
+    end
+
+    instance.cleanup = function()
+
+        output:close() -- release the bind of the output
+
+    end
+
+    instance:action("Enable Output").handler = function(properties, variables)
+        
+        output.state = true -- set output to on
+
+    end
+
+    instance:action("Disable Output").handler = function(properties, variables)
+        
+        output.state = false -- set output to off
+
+    end

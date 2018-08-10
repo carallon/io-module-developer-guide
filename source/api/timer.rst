@@ -65,3 +65,29 @@ The handler has the following signature:
    function(timer)
 
 The handler is called each time the timer interval has elapsed.
+
+Usage Example
+*************
+
+To run a countdown timer to perform an action after a delay.
+
+main.lua
+========
+
+.. code-block:: lua
+
+    instance.initialise = function()
+
+        countdown = iomodules.Timer.new()
+        countdown.single_shot = true -- only do this once
+        countdown.interval = 10000 -- ms (10s)
+
+        countdown.timeout_handler = function()
+
+            -- Do something after delay
+
+        end
+
+        countdown:start()
+
+    end
