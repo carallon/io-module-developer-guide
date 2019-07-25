@@ -9,16 +9,16 @@ Properties
 SslCertificate.null -> bool
 ===========================
 
-Read only. False if the certificate was not loaded successfully.
+Read only. True if the certificate was not loaded successfully.
 
 Methods
 *******
 
 SslCertificate.new(encoded_certificate, format) -> SslCertificate
-======================================
+=================================================================
 
 Creates a new ``SslCertificate`` from the string ``encoded_certficate`` using the format given by ``format``.
 
 ``encoded_certificate`` is an encoded certificate whose encoding must match ``format``.
 
-If specified, ``format`` must be one of the values in ``net.SslEncoding``. If ``format`` is not specified, ``net.SslEncoding.PEM`` is assumed.
+If specified, ``format`` must be one of the values in :doc:`net.SslEncoding <sslencoding>`. If ``format`` is not specified, ``net.SslEncoding.PEM`` is assumed.
