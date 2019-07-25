@@ -64,7 +64,7 @@ When the mode changes, the ``mode_changed_handler`` is called.
 SslSocket.configuration
 =======================
 
-The SSL configuration of this socket. SslSockets have a default configuration that will work for the majority of use cases. If more control is needed - for instance, the peer requires the client to provide a certificate - this can be overriden. If overriden, the new configuration will be applied during the next SSL handshake.
+The SSL configuration of this socket. SslSockets have a default configuration that will work for the majority of use cases. If more control is needed --- for instance, the server requires the client to provide a certificate --- this can be overriden. If overriden, the new configuration will be applied during the next SSL handshake.
 
 See :doc:`../net/sslconfiguration` for details about the SSLConfiguration API.
 
