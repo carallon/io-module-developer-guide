@@ -1,7 +1,7 @@
 net.SslKey
-#############
+##########
 
-Represents a public/private key used by an SSL socket or server.
+Represents a public or private key used by an SSL socket or server.
 
 Properties
 **********
@@ -9,12 +9,12 @@ Properties
 SslKey.null -> bool
 ===================
 
-Read only. False if the key was not loaded successfully.
+Read only. True if the key was not loaded successfully.
 
 SslKey.type
 ===========
 
-Read only. The key's type.
+Read only. The key type.
 
 .. list-table::
     :widths: 2 1 5
@@ -33,7 +33,7 @@ Read only. The key's type.
 SslKey.algorithm
 ================
 
-Read only. The key's algorithm.
+Read only. The key algorithm.
 
 .. list-table::
     :widths: 2 1 5
@@ -42,13 +42,13 @@ Read only. The key's algorithm.
     * - Algorithm
       - Value
       - Description
-    * - RSA
+    * - ``RSA``
       - 0
       - The RSA algorithm.
-    * - DSA
+    * - ``DSA``
       - 1
       - The DSA algorithm.
-    * - EC
+    * - ``EC``
       - 2
       - The Elliptic Curve algorithm.
 
@@ -56,9 +56,9 @@ Methods
 *******
 
 SslKey.new(encoded_key, algorithm, format, type) -> SslKey
-======================
+==========================================================
 
-Creates a new SslKey from the string  ``encoded_key``.
+Creates a new ``SslKey`` from the string  ``encoded_key``.
 
 ``encoded_key`` is an encoded public or private key whose encoding must match ``format``.
 
