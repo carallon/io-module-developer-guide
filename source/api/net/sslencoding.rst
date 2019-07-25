@@ -10,10 +10,9 @@ Contains constants representing encodings of private keys and certificates.
     * - Encoding
       - Value
       - Description
-    * - PEM
+    * - ``PEM``
       - 0
       - PEM encoding.
-    * - DER
+    * - ``DER``
       - 1
       - DER encoding.
-
