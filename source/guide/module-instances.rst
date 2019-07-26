@@ -328,3 +328,15 @@ For example, to start timeline 4 on all controllers from a module action:
     end
 
 Where ``variables`` is the array of values passed to ``instance:broadcast()``, converted to the ``Variant`` type. See the `Scripting API documentation <http://www.pharoscontrols.com/software_help/designer2/Default.htm#Help/Reference/Scripting/Variants.htm>`_ for information about Variants.
+
+Time changes
+============
+
+Whenever the controller's local time changes, the ``time_change`` handler is called. The controller's new local time can be retrieved via ``controller.time.get_current_time()``:
+
+.. code-block:: lua
+
+    instance.time_change = function()
+        local dateTime = controller.time.get_current_time()
+        controller.log("New time is " .. dateTime.utc_timestamp)
+    end
