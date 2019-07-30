@@ -114,6 +114,9 @@ Request options are passed as a table to :ref:`http.request()<http-request-metho
    * - ``headers``
      - :ref:`http-headers`
      - Headers to be set for the HTTP request
+   * - ``ssl_configuration``
+     - :doc:`../net/sslconfiguration`
+     - Optional. If given, overrides the default SSL configuration for communicating with servers requiring secure connections.
 
 .. _http-headers:
 
@@ -129,3 +132,26 @@ HTTP requests and responses have headers, according to the HTTP specification. H
       ["Content-Length"] = '32',
       ["Authorization"] = 'Bearer IssuedBearerToken'
    }
+
+Usage Example
+*************
+
+To send an HTTP GET request and read the response.
+
+main.lua
+========
+
+.. code-block:: lua
+
+    local options = { -- Create HTTP options
+        protocol = "http",
+        hostname = "www.example.com"
+    }
+
+    local request = iomodules.http.get(options) -- Send Get request
+    request.finished_handler = function(response)
+        if (response.status_code ~= 0) then -- a valid response was received e.g. 200 
+            local incomingMessage = response:read_all_string()
+            controller.log(incomingMessage)
+        end
+    end

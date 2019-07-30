@@ -94,3 +94,15 @@ In the instance script, the following code is executed:
     module.shared_table.register_datagram_received_callback(device_ip_address, datagram_received_callback)
 
 Now instances will receive device messages directly without having to know about management of the underlying UDP socket.
+
+Time changes
+============
+
+Whenever the controller's local time changes, the ``time_change`` handler is called. The controller's new local time can be retrieved via ``controller.time.get_current_time()``:
+
+.. code-block:: lua
+
+    module.time_change = function()
+        local dateTime = controller.time.get_current_time()
+        controller.log("New time is " .. dateTime.utc_timestamp)
+    end

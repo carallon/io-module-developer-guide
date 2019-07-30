@@ -79,3 +79,48 @@ The handler has the following signature:
    function(digital_input, state)
 
 The handler is called at regular intervals while the digital input is held in the ``state`` beyond the held timeout. The repeat interval and held timeout are configured for each controller and remote device in the Designer project.
+
+Usage Example
+*************
+
+To listen to an input and perform an action when the input changes.
+
+config.json
+===========
+
+.. code-block:: javascript
+
+    {
+        "instanceProperties": [
+            {
+                "name": "Input",
+                "type": "digitalIn"
+            }
+        ]
+    }
+
+main.lua
+========
+
+.. code-block:: lua
+
+    instance.initialise = function()
+
+        input = iomodules.DigitalInput.new()
+        input:bind(instance:property("Input"))
+
+        input.state_changed_handler = function(state)
+            if state == false then -- input changed to low (closed contact or low voltage input)
+                -- do something, e.g. fire a trigger
+            else
+                -- do something else
+            end
+        end
+
+    end
+
+    instance.cleanup = function()
+
+        input:close() -- release the bind of the input
+
+    end

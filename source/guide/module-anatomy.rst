@@ -414,6 +414,10 @@ An editor of type ``spinbox`` has the following members:
      - number
      - No
      - Default value of the property for new instances; default is 0.
+   * - ``specialValueText``
+     - string
+     - No
+     - Text to display in the property editor instead of a numeric value when the current value is equal to ``min``. The value of the property in the Lua scripts will still be ``min``.
 
 Double spin box editor
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -452,6 +456,10 @@ An editor of type ``doubleSpinbox`` has the following members:
      - number
      - No
      - Default value of the property for new instances; default is 0.0.
+   * - ``specialValueText``
+     - string
+     - No
+     - Text to display in the property editor instead of a numeric value when the current value is equal to ``min``. The value of the property in the Lua scripts will still be ``min``.
 
 IP address editor
 ^^^^^^^^^^^^^^^^^
