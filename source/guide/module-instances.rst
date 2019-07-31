@@ -12,7 +12,7 @@ As implied by their name, instance sandboxes can be independent, although in pra
 Module instances only run on the Primary controller in a project with the exception of :ref:`broadcast events <broadcast-event>`, which run on all controllers.
 
 Module API
-==========
+**********
 
 The ``module`` object is defined within the instance sandbox. This allows you to access module properties global to all instances, and access to a ``shared_table`` common to all instances.
 
@@ -109,6 +109,25 @@ Properties defined in the module configuration JSON file are set by the user in 
 .. code-block:: lua
 
     local ip_addr = instance:property("IP Address")
+
+Instance status variables
+=========================
+
+Instance status variables defined in the module configuration JSON file are accessed in Lua through the ``instance:get_status()`` and ``instance:set_status()`` methods:
+
+instance:get_status(key) -> string
+----------------------------------
+
+Returns the current value of the status variable with key ``key``. If the module instance has no status variable with ``key``, returns nil.
+
+instance:set_status(key, value)
+-------------------------------
+
+Sets the value of status variable with key ``key`` to ``value``. If the module instance has no status variable with ``key``, or ``value`` is not convertible to the status variable's type, this function does nothing.
+
+Status variables are initialized with empty string values. If default values are required, they must be explicitly set in the instance script, such as in the ``initialize`` handler.
+
+The current values of status variables will be periodically reported to the web interface and Cloud, allowing remote users to monitor the status of IO modules.
 
 Triggers
 ========
