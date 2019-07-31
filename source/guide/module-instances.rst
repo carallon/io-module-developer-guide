@@ -16,6 +16,15 @@ Module API
 
 The ``module`` object is defined within the instance sandbox. This allows you to access module properties global to all instances, and access to a ``shared_table`` common to all instances.
 
+Package information
+===================
+
+A set of read-only properties of the ``module`` object provide the values of a subset of fields of the ``package.json`` file:
+
+* ``name`` --- The name of the module, as specified by the ``"name"`` field of the ``package.json`` file.
+* ``version`` --- The version of the module, as specified by the ``"version"`` field of the ``package.json`` file.
+* ``apiVersion`` --- The IO module API version used by the module, as specified by the ``"ioModuleApiVersion"`` field of the ``package.json`` file.
+
 Module properties
 =================
 
