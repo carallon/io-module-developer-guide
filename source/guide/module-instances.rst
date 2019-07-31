@@ -125,9 +125,11 @@ instance:set_status(key, value)
 
 Sets the value of status variable with key ``key`` to ``value``. If the module instance has no status variable with ``key``, or ``value`` is not convertible to the status variable's type, this function does nothing.
 
+|
+
 Status variables are initialized with empty string values. If default values are required, they must be explicitly set in the instance script, such as in the ``initialize`` handler.
 
-The current values of status variables will be periodically reported to the web interface and Cloud, allowing remote users to monitor the status of IO modules.
+The current values of status variables will be periodically reported to the web interface and Cloud, allowing remote users to monitor the status of IO module instances.
 
 Triggers
 ========
