@@ -12,6 +12,15 @@ Module API
 
 A ``module`` object is defined within the module sandbox. In addition to the properties of the ``module`` object exposed to module instances, this object exposes lifetime functions similar to those of module instances.
 
+Package information
+===================
+
+A set of read-only properties provide the values of a subset of fields of the ``package.json`` file:
+
+* ``name`` --- The name of the module, as specified by the ``"name"`` field of the ``package.json`` file.
+* ``version`` --- The version of the module, as specified by the ``"version"`` field of the ``package.json`` file.
+* ``apiVersion`` --- The IO module API version used by the module, as specified by the ``"ioModuleApiVersion"`` field of the ``package.json`` file.
+
 Module lifetime functions
 =========================
 

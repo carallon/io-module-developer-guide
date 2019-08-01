@@ -135,7 +135,9 @@ The configuration JSON file within the module package defines the user interface
 * Triggers
 * Conditions
 * Actions
+* Module properties
 * Module instance properties
+* Module instance status variables
 
 For example:
 
@@ -205,6 +207,13 @@ For example:
                ]
            }
        ],
+       "instanceStatusVariables": [
+           {
+               "key": "lampState",
+               "label": "Lamp State",
+               "type": "string"
+           }
+       ],
        "instanceProperties": [
            {
                "name": "IP address",
@@ -243,6 +252,10 @@ Full details of the members of the configuration object are as follows:
      - array
      - No
      - An array of action objects (see below).
+   * - ``instanceStatusVariables``
+     - array
+     - No
+     - An array of status variables. This can have at most 50 entries.
    * - ``instanceProperties``
      - array
      - No
@@ -251,6 +264,32 @@ Full details of the members of the configuration object are as follows:
      - array
      - No
      - An array of user properties common to every module instance.
+
+Status Variable
+===============
+
+The ``instanceStatusVariables`` array in the configuration JSON object comprises objects with the following members:
+
+.. list-table::
+   :widths: 1 1 1 5
+   :header-rows: 1
+
+   * - Name
+     - Type
+     - Required
+     - Description
+   * - ``key``
+     - string
+     - Yes
+     - The key of the status variable when accessed from instance scripts. This can only contain characters in the set ``[a-zA-Z0-9]``, and may not exceed 20 characters in length. Every ``key`` must be unique.
+   * - ``label``
+     - string
+     - No
+     - The name of the status variable when displayed outside of instance scripts. This may not exceed 120 characters in length. If not specified, ``key`` will be used as the ``label``. Every ``label`` must be unique.
+   * - ``type``
+     - string
+     - No
+     - The ``type`` of the status variable. Currently only the type ``"string"`` is supported. If this property is not specified, ``"string"`` is the default type.
 
 Trigger/Condition/Action object
 ===============================
