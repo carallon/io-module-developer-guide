@@ -118,12 +118,12 @@ Instance status variables defined in the module configuration JSON file are acce
 instance:get_status(key) -> string
 ----------------------------------
 
-Returns the current value of the status variable with key ``key``. If the module instance has no status variable with ``key``, returns nil.
+Returns the current value of the status variable with key ``key``. If the module instance has no status variable with key ``key``, returns nil.
 
 instance:set_status(key, value)
 -------------------------------
 
-Sets the value of status variable with key ``key`` to ``value``. If the module instance has no status variable with ``key``, or ``value`` is not convertible to the status variable's type, this function does nothing.
+Sets the value of status variable with key ``key`` to ``value``. If the module instance has no status variable with key ``key``, or ``value`` is not convertible to the status variable's type, this function does nothing.
 
 |
 
