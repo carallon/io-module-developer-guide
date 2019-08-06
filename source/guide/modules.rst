@@ -95,6 +95,8 @@ In the instance script, the following code is executed:
 
 Now instances will receive device messages directly without having to know about management of the underlying UDP socket.
 
+.. _module-time-changes:
+
 Time changes
 ============
 
