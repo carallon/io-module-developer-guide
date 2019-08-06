@@ -265,6 +265,8 @@ Full details of the members of the configuration object are as follows:
      - No
      - An array of user properties common to every module instance.
 
+.. _status-variable-package-information:
+
 Status Variable
 ===============
 

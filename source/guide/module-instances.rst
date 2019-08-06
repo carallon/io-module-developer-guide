@@ -16,6 +16,8 @@ Module API
 
 The ``module`` object is defined within the instance sandbox. This allows you to access module properties global to all instances, and access to a ``shared_table`` common to all instances.
 
+.. _module-instance-package-information:
+
 Package information
 ===================
 
@@ -109,6 +111,8 @@ Properties defined in the module configuration JSON file are set by the user in 
 .. code-block:: lua
 
     local ip_addr = instance:property("IP Address")
+
+.. _module-instance-status-variables:
 
 Instance status variables
 =========================

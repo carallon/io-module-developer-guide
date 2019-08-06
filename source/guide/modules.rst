@@ -12,6 +12,8 @@ Module API
 
 A ``module`` object is defined within the module sandbox. In addition to the properties of the ``module`` object exposed to module instances, this object exposes lifetime functions similar to those of module instances.
 
+.. _module-package-information:
+
 Package information
 ===================
 
