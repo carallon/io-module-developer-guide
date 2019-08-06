@@ -381,6 +381,8 @@ The ``items`` array of a ``dropdown`` editor comprises objects with the followin
      - Yes, unless the parent property is of ``type`` string.
      - Value that will be set on the property when this item is chosen by the user.
 
+.. _spin-box-editor:
+
 Spin box editor
 ^^^^^^^^^^^^^^^
 
@@ -418,6 +420,8 @@ An editor of type ``spinbox`` has the following members:
      - string
      - No
      - Text to display in the property editor instead of a numeric value when the current value is equal to ``min``. The value of the property in the Lua scripts will still be ``min``.
+
+.. _double-spin-box-editor:
 
 Double spin box editor
 ^^^^^^^^^^^^^^^^^^^^^^
