@@ -359,6 +359,8 @@ For example, to start timeline 4 on all controllers from a module action:
 
 Where ``variables`` is the array of values passed to ``instance:broadcast()``, converted to the ``Variant`` type. See the `Scripting API documentation <http://www.pharoscontrols.com/software_help/designer2/Default.htm#Help/Reference/Scripting/Variants.htm>`_ for information about Variants.
 
+.. _module-instance-time-changes:
+
 Time changes
 ============
 
