@@ -12,6 +12,8 @@ Module API
 
 A ``module`` object is defined within the module sandbox. In addition to the properties of the ``module`` object exposed to module instances, this object exposes lifetime functions similar to those of module instances.
 
+.. _module-package-information:
+
 Package information
 ===================
 
@@ -103,6 +105,8 @@ In the instance script, the following code is executed:
     module.shared_table.register_datagram_received_callback(device_ip_address, datagram_received_callback)
 
 Now instances will receive device messages directly without having to know about management of the underlying UDP socket.
+
+.. _module-time-changes:
 
 Time changes
 ============

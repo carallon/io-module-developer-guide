@@ -16,6 +16,8 @@ Module API
 
 The ``module`` object is defined within the instance sandbox. This allows you to access module properties global to all instances, and access to a ``shared_table`` common to all instances.
 
+.. _module-instance-package-information:
+
 Package information
 ===================
 
@@ -109,6 +111,8 @@ Properties defined in the module configuration JSON file are set by the user in 
 .. code-block:: lua
 
     local ip_addr = instance:property("IP Address")
+
+.. _module-instance-status-variables:
 
 Instance status variables
 =========================
@@ -358,6 +362,8 @@ For example, to start timeline 4 on all controllers from a module action:
     end
 
 Where ``variables`` is the array of values passed to ``instance:broadcast()``, converted to the ``Variant`` type. See the `Scripting API documentation <http://www.pharoscontrols.com/software_help/designer2/Default.htm#Help/Reference/Scripting/Variants.htm>`_ for information about Variants.
+
+.. _module-instance-time-changes:
 
 Time changes
 ============
