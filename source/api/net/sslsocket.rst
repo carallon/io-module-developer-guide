@@ -68,6 +68,31 @@ The SSL configuration of this socket. SslSockets have a default configuration th
 
 See :doc:`../net/sslconfiguration` for details about the SSLConfiguration API.
 
+SslSocket.peer_verify_mode
+==========================
+
+The current peer verification mode for the socket.
+
+.. list-table::
+   :widths: 2 1 5
+   :header-rows: 1
+
+   * - Mode
+     - Value
+     - Description
+   * - ``VERIFY_NONE``
+     - 0
+     - The socket will not request a certificate from the peer. You can set this mode if you are not interested in the identity of the other side of the connection. The connection will still be encrypted, and your socket will still send its local certificate to the peer if it's requested.
+   * - ``QUERY_PEER``
+     - 1
+     - The socket will request a certificate from the peer, but does not require this certificate to be valid. This is useful when you want to display peer certificate details to the user without affecting the actual SSL handshake. This mode is the default for servers.
+   * - ``VERIFY_PEER``
+     - 2
+     - The socket will request a certificate from the peer during the SSL handshake phase, and requires that this certificate is valid. This mode is the default for clients.
+   * - ``AUTO_VERIFY_PEER``
+     - 3
+     - The socket will automatically use QUERY_PEER for server sockets and VERIFY_PEER for client sockets.
+
 Methods
 *******
 
