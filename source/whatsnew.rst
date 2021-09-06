@@ -1,8 +1,13 @@
 What's New
 ##########
 
-Latest (v2.2)
+Latest (v2.3)
 *************
+
+* Expose :ref:`peer verify mode<ssl-socket-peer-verify-mode>` in ``net.SslSocket``.
+
+v2.2
+****
 
 * Add package information properties to ``module`` objects in :ref:`Module scripts<module-package-information>` and :ref:`Instance scripts<module-instance-package-information>`.
 * Add instance status variables, which allow status reporting from IO module instances. See the :ref:`configuration properties<status-variable-package-information>` and the :ref:`instance API<module-instance-status-variables>` for more details.
