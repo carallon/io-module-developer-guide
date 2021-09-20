@@ -68,6 +68,8 @@ The SSL configuration of this socket. SslSockets have a default configuration th
 
 See :doc:`../net/sslconfiguration` for details about the SSLConfiguration API.
 
+.. _ssl-socket-peer-verify-mode:
+
 SslSocket.peer_verify_mode
 ==========================
 

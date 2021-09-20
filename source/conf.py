@@ -46,7 +46,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'IO Module Developer Guide'
-copyright = u'2017 Pharos Architectural Controls Ltd'
+copyright = u'2021 Pharos Architectural Controls Ltd'
 author = u'Carallon Ltd'
 
 # The version info for the project you're documenting, acts as replacement for
