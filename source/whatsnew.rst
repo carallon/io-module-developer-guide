@@ -5,6 +5,7 @@ Latest (v2.2.1)
 ***************
 
 * Expose :ref:`peer verify mode<ssl-socket-peer-verify-mode>` in ``net.SslSocket``.
+* Expose :ref:`peer verify mode<ssl-configuration-peer-verify-mode>` in ``net.SslConfiguration``.
 
 v2.2
 ****
