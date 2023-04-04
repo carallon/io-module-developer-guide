@@ -39,7 +39,7 @@ Cancels the alarm. The ``alarm_handler`` will not be called next time the event 
 Alarm:start()
 =============
 
-If ``condition_valid`` is true, starts or resumes the alarm; the ``alarm_handler`` will be called next time the event condition is matched. If ``condition_valid`` is false, the alarm is not started and an error is logged. 
+If ``condition_valid`` is true, starts or resumes the alarm; the ``alarm_handler`` will be called next time the event condition is matched. If ``condition_valid`` is false, the alarm is not started and an error is logged.
 
 Alarm:set_time(hour, minute, second)
 ====================================
@@ -55,7 +55,7 @@ Alarm.alarm_handler
 The handler has the following signature:
 
 .. code-block:: lua
-   
+
    function(alarm)
 
 The handler is called each time the alarm event condition is matched.
@@ -69,13 +69,13 @@ main.lua
 ========
 
 .. code-block:: lua
-    
+
     instance.initialise = function()
 
         dailyAlarm = iomodules.Alarm.new()
         dailyAlarm:set_time(0, 0, 0)
         dailyAlarm.single_shot = false
-        
+
         dailyAlarm.alarm_handler = function()
 
             -- run daily script

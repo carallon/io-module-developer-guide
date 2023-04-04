@@ -52,7 +52,7 @@ main.lua
         serialConnection:open(iomodules.Stream.READ_WRITE_MODE) -- Open port
 
         serialConnection.ready_read_handler = function(stream)
-        
+
             local incomingMessage = stream:read_all_string()
 
             -- Do something with the incoming message

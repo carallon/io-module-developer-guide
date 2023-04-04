@@ -47,7 +47,7 @@ When the mode changes, the ``mode_changed_handler`` is called.
 .. list-table::
    :widths: 2 1 5
    :header-rows: 1
-   
+
    * - Mode
      - Value
      - Description

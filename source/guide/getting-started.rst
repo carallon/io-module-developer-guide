@@ -46,25 +46,25 @@ We're going to build a timer module with start/stop actions and a timeout trigge
 With *Module* selected in the category list on the left, set the *Short name* property to *Timer*. Whatever you set as the short name will be prepended to any trigger, action or condition name in Designer. This gives you the option of not having to refer to your module name or function in every trigger, condition and action name. Leave this blank to ignore this feature.
 
 .. todo::
-   
+
    **Screenshot:** short name
 
 We're going to make the interval of our timer a property of each instance, so if the user wants timers with different intervals they must create multiple instances of our module. Click **New Instance Property** on the toolbar and give the property the name *Interval*. We want to specify the interval in seconds, so set *Type* to *Integer* and choose *Spin box* as the *Editor*. We'll allow intervals up to 10 minutes, so set the range as 0 to 600. Type *seconds* (or just 's', or 'secs' --- really, you choose) in the *Suffix* editor so it's clear what the units are, then choose a default --- 5 seconds seems reasonable (0 would cause the timer to timeout on every playback refresh).
 
 .. todo::
-   
+
    **Screenshot:** instance property
 
 Click **New Trigger** on the toolbar and change the name to *Timeout*. Pick an icon if you have one.
 
 .. todo::
-   
+
    **Screenshot:** trigger settings
 
 Click **New Action** on the toolbar and change the name to *Start*. Click **New Action** again and set this second action's name to *Stop*.
 
 .. todo::
-   
+
    **Screenshot:** one of the actions
 
 That's all we need to do for our template. Click **Next** to move on to the export stage. If you've missed anything out from the steps above you'll be shown the list of errors. Correct your mistakes and click **Next** to try again.
@@ -110,18 +110,18 @@ When the module instance is cleaned up, the instance ``cleanup`` handler is call
 Perform an action
 =================
 
-We need to add implementations for the action handlers that have been created in ``main.lua`` 
+We need to add implementations for the action handlers that have been created in ``main.lua``
 
 In the handler for the start action, add the following line to start the timer:
 
 .. code-block:: lua
-   
+
    timer:start()
 
 And in the handler for the stop action, add the following line to stop the timer:
 
 .. code-block:: lua
-   
+
    timer:stop()
 
 Fire a trigger
@@ -173,25 +173,25 @@ Load module into project
 To try out your module in Designer, launch the IO module creator again from Modules toolbar in the Designer Trigger view, only this time choose the option to *Create from an existing package.json file*. Click **Next**.
 
 .. todo::
-   
+
    **Screenshot:** First page with second option selected
 
 On the *Select Package File* page, set the file to be imported as the ``package.json`` file in your module package folder and click **Next**.
 
 .. todo::
-   
+
    **Screenshot:** Select Package File page
 
 On the *Import / Export IO Module* page, you only need to have *Load module into project* selected.
 
 .. todo:
-   
+
    **Screenshot:** Import / Export IO Module page with only Load check box checked
 
 Click **Finish** and your module will be added to your project, along with a new instance of the module. Notice the *Interval* property in the *Instance Properties*, set to the default of 5 seconds.
 
 .. todo:
-   
+
    **Screenshot:** module in module library, plus new instance properties (might want to wait for upcoming UI change)
 
 Click the **New...** button on the Trigger toolbar --- you'll notice that the *Timer: Timeout* trigger from your module has been added to the list of available triggers.

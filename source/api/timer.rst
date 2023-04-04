@@ -61,7 +61,7 @@ Timer.timeout_handler
 The handler has the following signature:
 
 .. code-block:: lua
-   
+
    function(timer)
 
 The handler is called each time the timer interval has elapsed.
