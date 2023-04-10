@@ -35,6 +35,7 @@ The functional part of modules is written in `Lua <https://www.lua.org/>`_. `JSO
    api/payload
    api/stopwatch
    api/timer
+   api/rdm/namespace
 
 * :ref:`genindex`
 * :ref:`search`
