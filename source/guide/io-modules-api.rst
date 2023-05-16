@@ -66,7 +66,7 @@ If you wanted to delay the bind with a timer, you must use the async version bec
 
    module.net_up = function()
       if bind_delay.active then
-         bind_delay:stop() 
+         bind_delay:stop()
       end
       bind_delay:start()
    end

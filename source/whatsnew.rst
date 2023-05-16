@@ -1,7 +1,12 @@
 What's New
 ##########
 
-Latest (v2.2.1)
+Latest (v2.3.0)
+***************
+
+* Add :doc:`RDM functionality<../api/rdm/namespace>`
+
+v2.2.1
 ***************
 
 * Expose :ref:`peer verify mode<ssl-socket-peer-verify-mode>` in ``net.SslSocket``.

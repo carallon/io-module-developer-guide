@@ -3,9 +3,6 @@ Stream
 
 Stream is an abstract read/write interface for reading data from a source in chunks, as it becomes available. It's not used directly; objects such as ``TcpSocket`` expose its interface.
 
-.. contents::
-   :local:
-
 Properties
 **********
 
@@ -24,7 +21,7 @@ Read only. The mode in which the stream has been opened. Modes are static proper
 .. list-table::
    :widths: 2 1 5
    :header-rows: 1
-   
+
    * - Mode
      - Value
      - Description

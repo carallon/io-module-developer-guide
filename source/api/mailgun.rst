@@ -47,7 +47,7 @@ main.lua
 .. code-block:: lua
 
     mailConnection = iomodules.Mailgun.new("yourdomain.com", "your-mailgun-account-key")
-    
+
     mailConnection.reply_handler = function(mailgun, email_sent)
         if email_sent == true then
             controller.log("ACTION Email notification: Send Successful")

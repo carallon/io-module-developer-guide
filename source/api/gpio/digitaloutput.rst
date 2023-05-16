@@ -83,13 +83,13 @@ main.lua
     end
 
     instance:action("Enable Output").handler = function(properties, variables)
-        
+
         output.state = true -- set output to on
 
     end
 
     instance:action("Disable Output").handler = function(properties, variables)
-        
+
         output.state = false -- set output to off
 
     end

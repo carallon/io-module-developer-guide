@@ -28,7 +28,7 @@ Asynchronous version of ``SslServer:next_pending_secure_connection()``, which mu
 The callback has the following signature:
 
 .. code-block:: lua
-   
+
    function(ssl_server, ssl_socket)
 
 If there are pending connections, the next secure connection will be passed in the ``ssl_socket`` argument. If there are no pending connections, ``ssl_socket`` will be nil.

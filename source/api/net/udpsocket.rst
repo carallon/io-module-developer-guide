@@ -22,7 +22,7 @@ Read only. The type of error that last occurred. Errors are static properties of
 .. list-table::
    :widths: 2 1 5
    :header-rows: 1
-   
+
    * - Error
      - Value
      - Description
@@ -64,7 +64,7 @@ Read only. The state of the socket. States are static properties of UdpSocket, e
 .. list-table::
    :widths: 2 1 5
    :header-rows: 1
-   
+
    * - State
      - Value
      - Description

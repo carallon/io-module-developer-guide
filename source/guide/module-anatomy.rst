@@ -45,7 +45,7 @@ Full details of the members of the package object are as follows:
 .. list-table::
    :widths: 2 1 1 4
    :header-rows: 1
-   
+
    * - Name
      - Type
      - Required
@@ -109,7 +109,7 @@ A contributor in the ``contributors`` array in the ``package.json`` file is a JS
 .. list-table::
    :widths: 1 1 1 5
    :header-rows: 1
-   
+
    * - Name
      - Type
      - Required
@@ -333,7 +333,7 @@ The ``properties`` array in the configuration JSON object and the trigger/condit
 .. list-table::
    :widths: 1 1 1 5
    :header-rows: 1
-   
+
    * - Name
      - Type
      - Required
@@ -369,7 +369,7 @@ The ``editor`` object in user properties always has the following ``type`` membe
 .. list-table::
    :widths: 1 1 1 5
    :header-rows: 1
-   
+
    * - Name
      - Type
      - Required
@@ -389,7 +389,7 @@ An editor of type ``dropdown`` has the following members:
 .. list-table::
    :widths: 1 1 1 5
    :header-rows: 1
-   
+
    * - Name
      - Type
      - Required
@@ -408,7 +408,7 @@ The ``items`` array of a ``dropdown`` editor comprises objects with the followin
 .. list-table::
    :widths: 1 3 3 3
    :header-rows: 1
-   
+
    * - Name
      - Type
      - Required
@@ -432,7 +432,7 @@ An editor of type ``spinbox`` has the following members:
 .. list-table::
    :widths: 1 1 1 5
    :header-rows: 1
-   
+
    * - Name
      - Type
      - Required
@@ -472,7 +472,7 @@ An editor of type ``doubleSpinbox`` has the following members:
 .. list-table::
    :widths: 1 1 1 5
    :header-rows: 1
-   
+
    * - Name
      - Type
      - Required
@@ -514,7 +514,7 @@ An editor of type ``ipAddress`` has the following members:
 .. list-table::
    :widths: 1 1 1 5
    :header-rows: 1
-   
+
    * - Name
      - Type
      - Required
@@ -532,7 +532,7 @@ An editor of type ``toggle`` (a check box) has the following members:
 .. list-table::
    :widths: 1 1 1 5
    :header-rows: 1
-   
+
    * - Name
      - Type
      - Required
@@ -550,7 +550,7 @@ An editor of type ``lineEdit`` has the following members:
 .. list-table::
    :widths: 1 1 1 5
    :header-rows: 1
-   
+
    * - Name
      - Type
      - Required
@@ -644,7 +644,7 @@ For example, in ``package.json``, you might have:
 Then in ``instance_main.lua`` or ``module_main.lua`` you can write:
 
 .. code-block:: lua
-   
+
    require('example')
 
 The string passed to ``require`` may be a file base name, as shown above, or a path to a Lua file within the module package, e.g. ``lib/example.lua``.

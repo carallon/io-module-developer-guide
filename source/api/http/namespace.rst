@@ -3,6 +3,12 @@ HTTP namespace
 
 The ``http`` namespace has methods to allow an IO module to perform HTTP requests. The ``request()`` method allows any HTTP request to be created; there are some convenience methods for GET, PUT, POST and DELETE requests. All the request methods return an :doc:`./response` object.
 
+
+.. toctree::
+   :maxdepth: 1
+
+   response
+
 Methods
 *******
 
@@ -89,7 +95,7 @@ Request options are passed as a table to :ref:`http.request()<http-request-metho
 .. list-table::
    :widths: 1 2 6
    :header-rows: 1
-   
+
    * - Key
      - Type
      - Description
@@ -150,7 +156,7 @@ main.lua
 
     local request = iomodules.http.get(options) -- Send Get request
     request.finished_handler = function(response)
-        if (response.status_code ~= 0) then -- a valid response was received e.g. 200 
+        if (response.status_code ~= 0) then -- a valid response was received e.g. 200
             local incomingMessage = response:read_all_string()
             controller.log(incomingMessage)
         end

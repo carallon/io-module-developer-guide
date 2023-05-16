@@ -83,7 +83,7 @@ main.lua
         input.level_changed_handler = function(input, level)
 
             -- do something with the level e.g. fire a trigger
-        
+
         end
 
     end
