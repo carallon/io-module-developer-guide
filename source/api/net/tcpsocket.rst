@@ -57,6 +57,15 @@ Read only. The type of error that last occurred. Errors are static properties of
    * - ``UNFINISHED_SOCKET_OPERATION_ERROR``
      - 11
      - The last socket operation has not finished yet.
+   * - ``SSL_HANDSHAKE_FAILED_ERROR``
+     - 13
+     - The SSL/TLS handshake failed, so the connection was closed.
+   * - ``SSL_INTERNAL_ERROR``
+     - 20
+     - The SSL library being used reported an internal error. Consult TcpServer.error_string for details.
+   * - ``SSL_INVALID_USERDATA_ERROR``
+     - 21
+     - Invalid data (certificate, key, cypher, etc.) was provided and its use resulted in an error in the SSL library.
    * - ``OPERATION_ERROR``
      - 19
      - An operation was attempted while the socket was in a state that did not permit it.
