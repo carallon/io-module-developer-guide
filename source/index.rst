@@ -13,6 +13,19 @@ Once a module is added to a project, the Designer user interface will present ad
 
 The functional part of modules is written in `Lua <https://www.lua.org/>`_. `JSON <http://www.json.org/>`_ is used to define the module package contents and the Designer user interface elements that the module exposes. Module documentation is written in `CommonMark <http://commonmark.org/>`_ (a strongly defined specification of the original `Markdown <https://daringfireball.net/projects/markdown/>`_).
 
+Standard Libraries
+******************
+
+The following standard Libraries are imported
+
+* `Basic library <https://www.lua.org/manual/5.3/manual.html#6.1>`_
+* `Package library <https://www.lua.org/manual/5.3/manual.html#6.3>`_
+* `String manipulation <https://www.lua.org/manual/5.3/manual.html#6.4>`_
+* `Basic UTF-8 support <https://www.lua.org/manual/5.3/manual.html#6.5>`_
+* `Table manipulation <https://www.lua.org/manual/5.3/manual.html#6.6>`_
+* `Mathematical functions <https://www.lua.org/manual/5.3/manual.html#6.7>`_
+* `Input and output <https://www.lua.org/manual/5.3/manual.html#6.8>`_
+
 
 .. toctree::
    :hidden:
