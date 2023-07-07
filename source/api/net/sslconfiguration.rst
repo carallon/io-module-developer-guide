@@ -9,7 +9,13 @@ Properties
 SslConfiguration.local_certificate -> SslCertificate
 ====================================================
 
-The certificate to be sent to the server in the Client Certificate message.
+The ``net.SslCertificate`` to be sent to the server in the Client Certificate message.
+
+SslConfiguration.local_certificate_chain -> table
+=================================================
+
+The table of ``net.SslCertificate`` establishing the chain of trust for the ``SslConfiguration.local_certificate``.
+
 
 .. _ssl-configuration-peer-verify-mode:
 
@@ -34,3 +40,11 @@ SslConfiguration.new() -> SslConfiguration
 ==========================================
 
 Creates a new SslConfiguration with the default configuration.
+
+SslConfiguration.add_ca_certificate() -> SslCertificate
+=======================================================
+
+Adds ``net.SslCertificate`` to this configuration's CA certificate database.
+The certificate database must be set prior to the SSL handshake.
+
+The CA certificate database is used by the socket during the handshake phase to validate the peer's certificate.
