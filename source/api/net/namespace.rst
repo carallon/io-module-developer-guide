@@ -16,3 +16,4 @@ The ``net`` namespace has methods to allow an IO module to to interact over a ne
    sslkey
    sslsocket
    sslserver
+   icmp
