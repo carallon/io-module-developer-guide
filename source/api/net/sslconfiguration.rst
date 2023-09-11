@@ -41,8 +41,8 @@ SslConfiguration.new() -> SslConfiguration
 
 Creates a new SslConfiguration with the default configuration.
 
-SslConfiguration.add_ca_certificate() -> SslCertificate
-=======================================================
+SslConfiguration.add_ca_certificate(SslCertificate)
+===================================================
 
 Adds ``net.SslCertificate`` to this configuration's CA certificate database.
 The certificate database must be set prior to the SSL handshake.
