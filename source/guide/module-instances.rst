@@ -30,15 +30,26 @@ A set of read-only properties of the ``module`` object provide the values of a s
 Module properties
 =================
 
-Properties defined in the ``moduleProperties`` field in the module configuration JSON file are set by the user in Designer for each module. To read the values of these properties in the instance, use the ``module:property()`` method, passing the name of the property as defined in the configuration.
+Properties defined in the ``moduleProperties`` field in the module configuration JSON file are set by the user in Designer for each module.
+The name of the property, as defined in the configuration, is used as the key.
 
-For example:
+module:property(key) -> any
+---------------------------
+
+Read the value of the instance property with key ``key``.
 
 .. code-block:: lua
 
     local udp_socket = iomodules.UdpSocket.new()
     local inbound_port = module:property("Inbound Port")
     udp_socket:bind_async(inbound_port)
+
+module:property_object(key) -> :doc:`../api/property`
+-----------------------------------------------------
+
+Only available from the module scoped script, as defined by ``moduleMain`` in the package JSON file.
+
+Returns a :doc:`../api/property` object allowing for expanded functionality.
 
 Shared table
 ============
@@ -106,11 +117,22 @@ For example:
 Instance properties
 ===================
 
-Properties defined in the module configuration JSON file are set by the user in Designer for each module instance. To read the value of these properties for the instance in Lua, use the ``instance:property()`` method, passing the name of the property as defined in the configuration, e.g.
+Properties defined in the ``instanceProperties`` field in the module configuration JSON file are set by the user in Designer for each module instance.
+The name of the property, as defined in the configuration, is used as the key.
+
+instance:property_object(key) -> any
+------------------------------------
+
+Read the value of the instance property with key ``key``.
 
 .. code-block:: lua
 
     local ip_addr = instance:property("IP Address")
+
+instance:property_object(key) -> :doc:`../api/property`
+-------------------------------------------------------
+
+Returns a :doc:`../api/property` object allowing for expanded functionality.
 
 .. _module-instance-status-variables:
 

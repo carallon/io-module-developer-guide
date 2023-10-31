@@ -42,11 +42,12 @@ The following standard Libraries are imported
    api/http/namespace
    api/net/namespace
    api/alarm
-   api/stream
-   api/serial
    api/mailgun
    api/payload
+   api/property
+   api/serial
    api/stopwatch
+   api/stream
    api/timer
    api/rdm/namespace
 
