@@ -357,7 +357,7 @@ The ``properties`` array in the configuration JSON object and the trigger/condit
    * - ``variablesEnabled``
      - bool
      - No
-     - Whether this property may be set from a trigger variable. Only applies to action properties. Default is true if not specified.
+     - Whether this property may be set from a trigger variable. Only applies to action and condition (since Designer 2.12.1) properties. Default is true if not specified.
 
 .. _user-property-editor:
 
