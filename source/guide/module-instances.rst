@@ -237,6 +237,8 @@ Then you would want to pass a number for the state to ``fire()`` so you can matc
 
 To determine the string describing the trigger that will be displayed in the Designer Trigger UI and on the controller's web interface, you should set the trigger's :ref:`description_handler <description-handler>`.
 
+If there are issues that might require the users attention, that should be displayed in the Designer Trigger UI, you should set the trigger's :ref:`issues_handler <issues-handler>`.
+
 .. _module-instances-conditions:
 
 Conditions
@@ -302,6 +304,8 @@ Then you could define the handler as follows:
 
 To determine the string describing the condition that will be displayed in the Designer Trigger UI and on the controller's web interface, you should set the condition's :ref:`description_handler <description-handler>`.
 
+If there are issues that might require the users attention, that should be displayed in the Designer Trigger UI, you should set the trigger's :ref:`issues_handler <issues-handler>`.
+
 Actions
 =======
 
@@ -340,6 +344,8 @@ Then you could define the handler as follows:
 
 To determine the string describing the action that will be displayed in the Designer Trigger UI and on the controller's web interface, you should set the action's :ref:`description_handler <description-handler>`.
 
+If there are issues that might require the users attention, that should be displayed in the Designer Trigger UI, you should set the trigger's :ref:`issues_handler <issues-handler>`.
+
 .. _description-handler:
 
 Description handler
@@ -357,6 +363,30 @@ For example:
         return "Set mode "..properties.Mode
     end
 
+.. _issues-handler:
+
+Issues handler
+==============
+
+The Designer Trigger UI can display issues strings about triggers, conditions and actions.
+To keep the user informed of invalid property combinations you should assign a function to the ``issues_handler`` property. The ``issues_handler`` is passed a table with the property values, keyed with the property names.
+``issues_handler`` should return a single string, or table of string, or simply a nil if there a no issues.
+
+.. note:: Properties being set from trigger variables will have a string value of "<variable x>", where x is the variable number set by the user.
+
+For example:
+
+.. code-block:: lua
+
+    instance:action("Set Mode").issues_handler = function(properties)
+        return "Property x is invalid"
+    end
+
+.. code-block:: lua
+
+    instance:action("Set Mode").issues_handler = function(properties)
+        return {"Property x is invalid", "Property y is invalid"}
+    end
 
 .. _broadcast-event:
 
