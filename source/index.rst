@@ -13,6 +13,8 @@ Once a module is added to a project, the Designer user interface will present ad
 
 The functional part of modules is written in `Lua <https://www.lua.org/>`_. `JSON <http://www.json.org/>`_ is used to define the module package contents and the Designer user interface elements that the module exposes. Module documentation is written in `CommonMark <http://commonmark.org/>`_ (a strongly defined specification of the original `Markdown <https://daringfireball.net/projects/markdown/>`_).
 
+.. _lua-standard_libraries:
+
 Standard Libraries
 ******************
 

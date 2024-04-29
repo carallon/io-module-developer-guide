@@ -11,6 +11,8 @@ SslConfiguration.local_certificate -> SslCertificate
 
 The ``net.SslCertificate`` to be sent to the server in the Client Certificate message.
 
+.. _ssl-configuration-local_certificate_chain:
+
 SslConfiguration.local_certificate_chain -> table
 =================================================
 
@@ -40,6 +42,8 @@ SslConfiguration.new() -> SslConfiguration
 ==========================================
 
 Creates a new SslConfiguration with the default configuration.
+
+.. _ssl-configuration-add_ca_certificate:
 
 SslConfiguration.add_ca_certificate(SslCertificate)
 ===================================================
