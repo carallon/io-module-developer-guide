@@ -349,7 +349,7 @@ The ``properties`` array in the configuration JSON object and the trigger/condit
    * - ``type``
      - string
      - Yes
-     - Value type of the property. Supported basic types are: ``int``, ``string``, ``double``, ``bool`` & ``ipAddress``. Supported resource types are: ``digitalInput``, ``digitalOutput``, ``analogInput`` & ``serial`` (see :ref:`resource-property-types`).
+     - Value type of the property. Supported basic types are: ``int``, ``string``, ``double``, ``bool`` & ``ipAddress``. Supported resource types are: ``digitalIn``, ``digitalOut``, ``analogIn`` & ``serial`` (see :ref:`resource-property-types`).
    * - ``editor``
      - object
      - No
@@ -596,21 +596,21 @@ Resource types do not support custom editors - a standard editor will be present
 Digital input
 ^^^^^^^^^^^^^
 
-Set user property ``type`` to value ``digitalInput``.
+Set user property ``type`` to value ``digitalIn``.
 
 :doc:`Digital inputs <../api/gpio/digitalinput>` are available on controllers and remote devices. To listen for changes in the state of a digital input, you must have at least one of these properties in the configuration.
 
 Digital output
 ^^^^^^^^^^^^^^
 
-Set user property ``type`` to value ``digitalOutput``.
+Set user property ``type`` to value ``digitalOut``.
 
 :doc:`Digital outputs <../api/gpio/digitaloutput>` are available on some remote devices. To control the state of a digital output, you must have at least one of these properties in the configuration.
 
 Analog input
 ^^^^^^^^^^^^
 
-Set user property ``type`` to value ``analogInput``.
+Set user property ``type`` to value ``analogIn``.
 
 :doc:`Analog inputs <../api/gpio/analoginput>` are available on controllers and remote devices. To listen for changes in the level of an analog input, you must have at least one of these properties in the configuration.
 
