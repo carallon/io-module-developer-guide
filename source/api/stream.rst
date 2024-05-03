@@ -71,7 +71,7 @@ Stream.readable -> bool
 Read only. True if this stream is open for reading.
 
 Stream.writeable -> bool
-=======================
+========================
 
 Read only. True if this stream is open for writing.
 

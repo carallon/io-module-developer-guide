@@ -1,13 +1,28 @@
 What's New
 ##########
 
-Latest (v2.3.0)
+Latest (v2.5.0)
 ***************
+
+* :doc:`../api/property` - new module/instance property object allowing for dynamically enabled and/or visible.
+* Add ``property_object`` in :ref:`Module properties<module-instance-module-properties>` and :ref:`Instance properties<module-instance-instance-properties>`.
+
+v2.4.0
+******
+
+* Add property :ref:`certificate chain<ssl-configuration-local_certificate_chain>` in ``net.SslConfiguration``.
+* Add function :ref:`add CA certificate<ssl-configuration-add_ca_certificate>` in ``net.SslConfiguration``.
+* Increased access to :ref:`Lua standard libraries<lua-standard_libraries>`.
+* :doc:`../api/net/icmp` - "Ping" remote peers using ICMP.
+* Expose numerical base of :ref:`spin box editors<spin-box-editor>`.
+
+v2.3.0
+******
 
 * Add :doc:`RDM functionality<../api/rdm/namespace>`
 
 v2.2.1
-***************
+******
 
 * Expose :ref:`peer verify mode<ssl-socket-peer-verify-mode>` in ``net.SslSocket``.
 * Expose :ref:`peer verify mode<ssl-configuration-peer-verify-mode>` in ``net.SslConfiguration``.
