@@ -461,7 +461,7 @@ An editor of type ``spinbox`` has the following members:
      - string
      - No
      - Text to display in the property editor instead of a numeric value when the current value is equal to ``min``. The value of the property in the Lua scripts will still be ``min``.
-  * - ``base``
+   * - ``base``
      - integer
      - No
      - The numerical base in which to display the value, e.g. Base-16 would be Hex; default is 10.
