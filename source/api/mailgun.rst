@@ -30,11 +30,16 @@ The handler has the following signature:
 
 .. code-block:: lua
 
-   function(mailgun, email_sent)
+   function(mailgun, email_sent, error_code, message)
 
 This handler is called when an attempt to send an email with ``send_mail()`` is acknowledged by the Mailgun service. ``email_sent`` is true if the email was successfully sent.
 
-Calling ``send_mail()`` from this function should be avoided at all costs, else it is possible to enter an infinite email-sending loop. More SpamCannon than Mailgun, if you will.
+``error_code`` are shared with http.response (see :ref:`http-response-error`).
+
+``message`` contains a helpful description of the error.
+
+.. attention::
+    Calling ``send_mail()`` from this function should be avoided at all costs, else it is possible to enter an infinite email-sending loop. More SpamCannon than Mailgun, if you will.
 
 Usage Example
 *************
@@ -48,11 +53,11 @@ main.lua
 
     mailConnection = iomodules.Mailgun.new("yourdomain.com", "your-mailgun-account-key")
 
-    mailConnection.reply_handler = function(mailgun, email_sent)
+    mailConnection.reply_handler = function(mailgun, email_sent, error_code, message)
         if email_sent == true then
             controller.log("ACTION Email notification: Send Successful")
         else
-            controller.log("ACTION Email notification: Send Fail")
+            controller.log("ACTION Email notification: Send Fail, with reason: " .. message .. ", code: " .. error)
         end
     end
 

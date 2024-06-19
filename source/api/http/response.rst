@@ -18,6 +18,8 @@ Response.status_message
 
 HTTP response status message, e.g. *OK* or *Internal Server Error*.
 
+.. _http-response-error:
+
 Response.error
 ==============
 
