@@ -37,3 +37,11 @@ rdm.UniverseKey.new_edn20(remote_number, port) -> UniverseKey
 Creates a new UniverseKey for an EDN 20.
 
 In this case two parameters are passed in : the Remote Device Number of the EDN, and the zero-based port number on that EDN.
+
+
+rdm.UniverseKey.new_riog4(remote_number, port) -> UniverseKey
+=============================================================
+
+Creates a new UniverseKey for a RIO G4.
+
+In this case two parameters are passed in : the Remote Device Number of the RIO G4, and the zero-based port number on the device.
