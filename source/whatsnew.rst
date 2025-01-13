@@ -1,8 +1,15 @@
 What's New
 ##########
 
-Latest (v2.5.0)
+Latest (v2.6.0)
 ***************
+
+* Add error code and error information to the :doc:`../api/mailgun` reply_handler.
+* Add ability for modules to interact with Designer Project issues using the :ref:`issues_handler <issues-handler>`.
+* Add support for RIO G4 to the RDM API.
+
+v2.5.0
+******
 
 * :doc:`../api/property` - new module/instance property object allowing for dynamically enabled and/or visible.
 * Add ``property_object`` in :ref:`Module properties<module-instance-module-properties>` and :ref:`Instance properties<module-instance-instance-properties>`.
