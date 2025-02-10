@@ -672,6 +672,13 @@ Set user property ``type`` to value ``serial``.
 
 :doc:`Serial <../api/serial>` interfaces are available on controllers and remote devices. To send/receive data on a serial interface in an IO module, you must have at least one of these properties in the configuration.
 
+Universe key
+^^^^^^^^^^^^
+
+Set user property ``type`` to value ``universeKey``.
+
+:doc:`UniverseKey <../api/rdm/universe-key>` are available on controllers and remote devices.
+
 Icons
 *****
 
