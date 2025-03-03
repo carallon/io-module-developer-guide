@@ -5,6 +5,15 @@ An RDM universe key is used to specify the RDM port that an RDM transaction is o
 
 Universe keys are created with a specific function depending on the type of device you are creating one for:
 
+Properties
+**********
+
+UniverseKey.universe
+====================
+Read only. Returns a `Universe`_ object derived from the UniverseKey.
+
+.. _Universe: http://pharos-designer-controller-api.readthedocs.io/en/latest/lua-api/universe.html
+
 Methods
 *******
 
