@@ -422,6 +422,57 @@ The ``items`` array of a ``dropdown`` editor comprises objects with the followin
      - Yes, unless the parent property is of ``type`` string.
      - Value that will be set on the property when this item is chosen by the user.
 
+Multiselect Drop down editor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Similar to ``dropdown``, a ``multidropdown`` can have multiple items selected. The result is returned as a Lua table of ``value``.
+
+An editor of type ``multidropdown`` has the following members:
+
+.. list-table::
+   :widths: 1 1 1 5
+   :header-rows: 1
+
+   * - Name
+     - Type
+     - Required
+     - Description
+   * - ``items``
+     - array
+     - Yes
+     - Items to populate the drop down editor (see below).
+   * - ``default``
+     - array of numbers
+     - No
+     - Indexes into the ``items`` array to use as the default selected values for new instances of the property. The index is 1-based, like Lua tables.
+   * - ``placeholder``
+     - string
+     - No
+     - Placeholder text for the editor when no items are selected.
+   * - ``allow_any``
+     - bool
+     - No
+     - Adds the special `Any` item to the top of the list. Selecting this item will automatically select all other items.
+
+The ``items`` array of a ``multidropdown`` editor comprises objects with the following members:
+
+.. list-table::
+   :widths: 1 3 3 3
+   :header-rows: 1
+
+   * - Name
+     - Type
+     - Required
+     - Description
+   * - ``text``
+     - string
+     - Yes
+     - User-friendly text that will be displayed in the drop down editor for this item.
+   * - ``value``
+     - Must match the ``type`` of the parent property.
+     - Yes, unless the parent property is of ``type`` string.
+     - Value that will be set on the property when this item is chosen by the user.
+
 .. _spin-box-editor:
 
 Spin box editor
