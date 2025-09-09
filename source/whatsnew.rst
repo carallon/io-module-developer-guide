@@ -1,8 +1,14 @@
 What's New
 ##########
 
-Latest (v2.6.0)
+Latest (v2.7.0)
 ***************
+
+* Add :ref:`Multi select drop down <multi-drop-down>` editor type.
+* Add :doc:`UniverseKey <../api/rdm/universe-key>`.
+
+v2.6.0
+******
 
 * Add error code and error information to the :doc:`../api/mailgun` reply_handler.
 * Add ability for modules to interact with Designer Project issues using the :ref:`issues_handler <issues-handler>`.

@@ -422,6 +422,8 @@ The ``items`` array of a ``dropdown`` editor comprises objects with the followin
      - Yes, unless the parent property is of ``type`` string.
      - Value that will be set on the property when this item is chosen by the user.
 
+.. _multi-drop-down:
+
 Multiselect Drop down editor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
