@@ -1,8 +1,11 @@
 What's New
 ##########
 
-Latest (v2.7.0)
+Latest (v2.8.0)
 ***************
+
+v2.7.0
+******
 
 * Add :ref:`Multi select drop down <multi-drop-down>` editor type.
 * Add :doc:`UniverseKey <../api/rdm/universe-key>`.
