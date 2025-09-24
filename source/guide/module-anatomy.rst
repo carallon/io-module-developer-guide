@@ -322,6 +322,10 @@ The ``triggers``, ``conditions`` and ``actions`` arrays in the configuration JSO
      - array
      - No
      - An array of user properties to be exposed in the Designer (see :ref:`user-property`).
+   * - ``rate-limit`` (triggers only)
+     - bool
+     - false
+     - Should this trigger be rate limitable in Designer?
 
 .. _user-property:
 
