@@ -78,9 +78,13 @@ The handler has the following signature:
 
 .. code-block:: lua
 
-   function(icmp, timeout)
+   function(icmp, timeout, ip, sequence)
 
 The handler is called after no ping reply (ICMP echo response) following a interval of ``timeout`` milliseconds.
+
+The destination ``ip`` is given as an integer, this can be converted to dotted decimal format using ``controller.Variant``
+
+The ``sequence`` number is automatically increased, starting from 0, on each call of ``send_ping()``.
 
 ICMP.error_handler
 =======================
