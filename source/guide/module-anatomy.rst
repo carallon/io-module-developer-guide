@@ -381,7 +381,7 @@ The ``editor`` object in user properties always has the following ``type`` membe
    * - ``type``
      - string
      - Yes
-     - Type of the user interface control to be used for the editor. Supported types are: ``dropdown``, ``spinbox``, ``doubleSpinbox``, ``ipAddress``, ``toggle`` & ``lineEdit``.
+     - Type of the user interface control to be used for the editor. Supported types are: ``dropdown``, ``spinbox``, ``doubleSpinbox``, ``ipAddress``, ``toggle``, ``lineEdit`` & ``multiLineEdit``.
 
 Depending on the ``type``, the ``editor`` object has additional members as detailed in the following sections.
 
@@ -629,6 +629,38 @@ An editor of type ``lineEdit`` has the following members:
      - string
      - No
      - Default string value of the property for new instances.
+
+Multiple line editor
+^^^^^^^^^^^^^^^^^^^^
+
+Whereas a ``lineEdit`` only processes a single line of text input, a ``multiLineEdit`` can handle multiple lines of text input.
+
+An editor of type ``multiLineEdit`` has the following members:
+
+.. list-table::
+   :widths: 1 1 1 5
+   :header-rows: 1
+
+   * - Name
+     - Type
+     - Required
+     - Description
+   * - ``placeholder``
+     - string
+     - No
+     - Placeholder text for the editor when its string value is empty.
+   * - ``validator``
+     - string
+     - No
+     - Regular expression to match for a valid user input. See the note on regular expressions below.
+   * - ``default``
+     - string
+     - No
+     - Default string value of the property for new instances.
+   * - ``linesBeforeScrollBar``
+     - integer
+     - no
+     - The number of lines always visible before needing scroll bars
 
 Regular expressions
 """""""""""""""""""
